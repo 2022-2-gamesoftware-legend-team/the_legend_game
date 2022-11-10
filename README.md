@@ -21,6 +21,8 @@ https://vmsdurano.com/c-coding-guidelines-and-practices/
 
 ### GIT Commit Guideline
 
+<img width="535" alt="화면 캡처 2022-11-10 134122" src="https://user-images.githubusercontent.com/85275893/201002326-84ab80ac-af5f-4b58-b216-26341ddd6079.png">
+
 * gitflow 방식 사용
 * 커밋 메시지 한글로 작성
 
