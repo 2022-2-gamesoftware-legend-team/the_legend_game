@@ -37,6 +37,8 @@ public class EnemyAnimate : NetworkBehaviour
                 enemyAnimator.SetBool("isJumping", true);
                 // enemyRigidbody.AddForce(Vector2.up * speed, ForceMode2D.Impulse);
                 jumping = Vector2.up * speed;
+            } else if (!enemyAnimator.GetBool("isJumping") && Input.GetKeyDown(KeyCode.LeftControl)) {
+                enemyAnimator.SetTrigger("Attack");
             }
             if (moving != Vector2.zero || jumping != Vector2.zero) {
                 // CmdMove(moving + jumping);
