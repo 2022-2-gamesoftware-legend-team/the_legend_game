@@ -2413,7 +2413,7 @@ GameObject:
   - component: {fileID: 3222456216730922531}
   - component: {fileID: 3222456216730922533}
   - component: {fileID: 3222456216730922532}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TrapTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
