@@ -3183,7 +3183,7 @@ GameObject:
   - component: {fileID: 3715443129504869917}
   - component: {fileID: 5204853427475336093}
   - component: {fileID: 8630668413829204488}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GroundTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
