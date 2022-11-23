@@ -24,7 +24,7 @@ public class EnemyAnimate : NetworkBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    { 
         if (isLocalPlayer)
         {
             float horizontal = Input.GetAxis("Horizontal");

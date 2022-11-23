@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 3523613359612021090}
   - component: {fileID: -8904588257518101316}
   - component: {fileID: 8707252097557286103}
+  - component: {fileID: 486732516823145221}
+  - component: {fileID: 362532927404940051}
   m_Layer: 0
   m_Name: Enemy2
   m_TagString: Enemy
@@ -159,11 +161,11 @@ BoxCollider2D:
   m_GameObject: {fileID: 8996526953440462208}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 7d19147c05d062044a94a1b073231aa5, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.16059959, y: -0.16532308}
+  m_Offset: {x: -0.16059959, y: -0.10642587}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -174,7 +176,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3069557, y: 0.6293539}
+  m_Size: {x: 0.3069557, y: 0.5115595}
   m_EdgeRadius: 0
 --- !u!114 &3523613359612021090
 MonoBehaviour:
@@ -231,3 +233,31 @@ MonoBehaviour:
   syncInterval: 0.1
   clientAuthority: 1
   animator: {fileID: 8996526953440462223}
+--- !u!114 &486732516823145221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8996526953440462208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3665fe8075dded44db951cd66f631666, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &362532927404940051
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8996526953440462208}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.16, y: -0.34}
+  serializedVersion: 2
+  m_Radius: 0.14
