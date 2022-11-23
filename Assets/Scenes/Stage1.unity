@@ -266,6 +266,14 @@ PrefabInstance:
       propertyPath: m_UsedByComposite
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7217880622984225484, guid: 138e2108b13a3134aae25f4136832638, type: 3}
+      propertyPath: m_ChunkCullingBounds.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7217880622984225484, guid: 138e2108b13a3134aae25f4136832638, type: 3}
+      propertyPath: m_ChunkCullingBounds.y
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 138e2108b13a3134aae25f4136832638, type: 3}
 --- !u!1 &1612871734 stripped
