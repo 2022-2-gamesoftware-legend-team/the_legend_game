@@ -1314,8 +1314,8 @@ GameObject:
   - component: {fileID: 7217880622984225331}
   - component: {fileID: 7217880622984225484}
   - component: {fileID: 7217880622984225330}
-  - component: {fileID: 3770294105783498559}
-  - component: {fileID: 6208725434251693006}
+  - component: {fileID: 1612871737}
+  - component: {fileID: 1612871736}
   m_Layer: 8
   m_Name: Tilemap
   m_TagString: Untagged
@@ -21261,7 +21261,7 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
---- !u!50 &3770294105783498559
+--- !u!50 &1612871737
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -21282,7 +21282,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!66 &6208725434251693006
+--- !u!66 &1612871736
 CompositeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
