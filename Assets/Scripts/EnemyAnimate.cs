@@ -60,6 +60,11 @@ public class EnemyAnimate : NetworkBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.tag == "Enemy") {
+            print("enemy collider");
+            SyncScore score = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<SyncScore>();
+            score.ChangeScore(score.Score + 1);
+        }
+        if (collision.gameObject.tag == "Player") {
             Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.collider);
         }
         print("oncollisionenter2d");
