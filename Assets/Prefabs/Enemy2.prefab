@@ -19,9 +19,11 @@ GameObject:
   - component: {fileID: 8707252097557286103}
   - component: {fileID: 486732516823145221}
   - component: {fileID: 362532927404940051}
+  - component: {fileID: 7912994065723772968}
+  - component: {fileID: 6334695121583318647}
   m_Layer: 0
   m_Name: Enemy2
-  m_TagString: Enemy
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -261,3 +263,54 @@ CircleCollider2D:
   m_Offset: {x: -0.16, y: -0.34}
   serializedVersion: 2
   m_Radius: 0.14
+--- !u!114 &7912994065723772968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8996526953440462208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 1
+  sendRate: 30
+  bufferTimeMultiplier: 2
+  bufferSizeLimit: 64
+  catchupNegativeThreshold: -1
+  catchupPositiveThreshold: 1
+  catchupSpeed: 0.009999999776482582
+  slowdownSpeed: 0.009999999776482582
+  driftEmaDuration: 1
+  dynamicAdjustment: 1
+  dynamicAdjustmentTolerance: 1
+  deliveryTimeEmaDuration: 2
+  onlySyncOnChange: 1
+  bufferResetMultiplier: 5
+  positionSensitivity: 0.01
+  rotationSensitivity: 0.01
+  scaleSensitivity: 0.01
+  syncPosition: 1
+  syncRotation: 1
+  syncScale: 0
+  showGizmos: 0
+  showOverlay: 0
+  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+--- !u!114 &6334695121583318647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8996526953440462208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19f3c7ed61b645b498cdb6ced02a189b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
