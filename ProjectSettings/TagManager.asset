@@ -15,9 +15,9 @@ TagManager:
   - Ground
   - Water
   - UI
-  - Object
-  - Player
-  - enumy
+  - Trap
+  - Ladder
+  - Box
   - 
   - 
   - 
