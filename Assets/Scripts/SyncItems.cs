@@ -5,7 +5,7 @@ using Mirror;
 
 public class SyncItems : NetworkBehaviour
 {
-    public readonly SyncList<int> Items = new SyncList<int>();
+    public readonly SyncSortedSet<int> Items = new SyncSortedSet<int>();
 
     // Start is called before the first frame update
     void Start()
@@ -19,12 +19,20 @@ public class SyncItems : NetworkBehaviour
         
     }
 
-    [Command]
-    void CmdAddItem(int item) {
-        Items.Add(item);
+    public void AddItem(int item) {
+        if (isServer) {
+            Items.Add(item);
+        } else {
+            CmdAddItem(item);
+        }
     }
 
-    bool HasItem(int item) {
+    [Command(requiresAuthority=false)]
+    public void CmdAddItem(int item) {
+        AddItem(item);
+    }
+
+    public bool HasItem(int item) {
         foreach(int i in Items) {
             if (i==item) {
                 return true;

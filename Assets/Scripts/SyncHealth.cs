@@ -7,7 +7,7 @@ public class SyncHealth : NetworkBehaviour
 {
 
     [SyncVar(hook = nameof(OnHealthChanged))]
-    public int health;
+    public int Health;
     
     // Start is called before the first frame update
     void Start()
@@ -21,23 +21,23 @@ public class SyncHealth : NetworkBehaviour
         
     }
 
-    [Command]
+    [Command(requiresAuthority=false)]
     void CmdSetHealth(int health) {
-        this.health = health;
+        this.Health = health;
     }
 
-    [Command]
+    [Command(requiresAuthority=false)]
     void CmdDecHealth() {
-        this.health--;
+        this.Health--;
     }
 
-    [Command]
+    [Command(requiresAuthority=false)]
     void CmdIncHealth() {
-        this.health++;
+        this.Health++;
     }
 
-    int CmdGetHealth() {
-        return this.health;
+    int GetHealth() {
+        return this.Health;
     }
 
     void OnHealthChanged(int oldHealth, int newHealth) {
