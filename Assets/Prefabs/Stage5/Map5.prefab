@@ -840,7 +840,7 @@ GameObject:
   - component: {fileID: 116928671075407206}
   m_Layer: 6
   m_Name: TrapTile
-  m_TagString: Untagged
+  m_TagString: Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12011,7 +12011,7 @@ GameObject:
   - component: {fileID: 116928671584208678}
   m_Layer: 7
   m_Name: LadderTile
-  m_TagString: Untagged
+  m_TagString: Ladder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
