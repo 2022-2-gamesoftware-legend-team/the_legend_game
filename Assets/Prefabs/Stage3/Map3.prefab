@@ -11670,6 +11670,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BackGroundSky
       objectReference: {fileID: 0}
+    - target: {fileID: 4003474808373421097, guid: c780d55c9282d354fb9a8d39190330e5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.62
+      objectReference: {fileID: 0}
     - target: {fileID: 4660147710755209215, guid: c780d55c9282d354fb9a8d39190330e5, type: 3}
       propertyPath: m_RootOrder
       value: 1
