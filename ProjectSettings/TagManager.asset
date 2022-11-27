@@ -6,8 +6,8 @@ TagManager:
   tags:
   - Item
   - JumpItem
-  - revivial
   - Enumy
+  - Revival
   layers:
   - Default
   - TransparentFX

@@ -69,7 +69,7 @@ public class Enumy : MonoBehaviour
    public Transform boxpos;
    public Vector2 boxSize;
    public void Attack(){
-    if(flip == false)
+    if(flip == false) //우측 모션
     {
         if(animator.GetFloat("Direction")== -1)
         {
