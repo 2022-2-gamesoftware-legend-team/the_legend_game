@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enumy : MonoBehaviour
 {
     public Transform player;
+    public bool flip = true;
     Animator animator;
     public float speed = 1.5f;
     private SpriteRenderer spriteRenderer;
@@ -34,22 +35,42 @@ public class Enumy : MonoBehaviour
     
    public void DirectionEnemy(float target, float baseobj)
    {
-        if(target<baseobj)
+        if(flip == true) // 우측 시작
         {
-            animator.SetFloat("Direction", -1);
-            spriteRenderer.flipX = true;
+            if(target<baseobj)
+            {
+                animator.SetFloat("Direction", -1);
+                spriteRenderer.flipX = false;
+            }
+            else
+            {
+                animator.SetFloat("Direction", 1);
+                spriteRenderer.flipX = true;
+            }
         }
-        else
+        else //좌측 시작
         {
-            animator.SetFloat("Direction", 1);
-            spriteRenderer.flipX = false;
+            if(target<baseobj)
+            {
+                animator.SetFloat("Direction", -1);
+                spriteRenderer.flipX = true;
+            }
+            else
+            {
+                animator.SetFloat("Direction", 1);
+                spriteRenderer.flipX = false;
+            }
         }
+
+        
             
    }
 
    public Transform boxpos;
    public Vector2 boxSize;
    public void Attack(){
+    if(flip == false)
+    {
         if(animator.GetFloat("Direction")== -1)
         {
             if(boxpos.localPosition.x>0)
@@ -73,5 +94,34 @@ public class Enumy : MonoBehaviour
                 Debug.Log("Damage");
             }
         }
+    }
+    else //좌측 모션
+    {
+        if(animator.GetFloat("Direction")== -1)
+        {
+            if(boxpos.localPosition.x>0)
+            {
+                
+                boxpos.localPosition = new Vector2(Mathf.Abs(boxpos.localPosition.x), boxpos.localPosition.y);
+            }
+        }
+        else
+        {
+            if(boxpos.localPosition.x<0)
+            {
+                boxpos.localPosition = new Vector2(boxpos.localPosition.x * -1,  boxpos.localPosition.y );
+            }
+        }
+
+        Collider2D[] collider2Ds= Physics2D.OverlapBoxAll(boxpos.position, boxSize, 0);
+        foreach(Collider2D coliider in collider2Ds)
+        {   
+            if(coliider.tag == "Player")
+            {
+                Debug.Log("Damage");
+            }
+        }
+    }
+        
    }
 }
