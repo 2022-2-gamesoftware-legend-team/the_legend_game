@@ -21,7 +21,7 @@ public class followScript : StateMachineBehaviour
             animator.SetBool("isBack", true);
             animator.SetBool("isFollow", false);
         }
-        else if(Vector2.Distance(enemy.player.position, enemyTransform.position)>2.3f)
+        else if(Vector2.Distance(enemy.player.position, enemyTransform.position)>1.7f)
             enemyTransform.position = Vector2.MoveTowards(enemyTransform.position, enemy.player.position, Time.deltaTime* enemy.speed);
         else
         {

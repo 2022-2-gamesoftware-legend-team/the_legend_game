@@ -46,4 +46,32 @@ public class Enumy : MonoBehaviour
         }
             
    }
+
+   public Transform boxpos;
+   public Vector2 boxSize;
+   public void Attack(){
+        if(animator.GetFloat("Direction")== -1)
+        {
+            if(boxpos.localPosition.x>0)
+            {
+                boxpos.localPosition = new Vector2(boxpos.localPosition.x * -1,  boxpos.localPosition.y );
+            }
+        }
+        else
+        {
+            if(boxpos.localPosition.x<0)
+            {
+                boxpos.localPosition = new Vector2(Mathf.Abs(boxpos.localPosition.x), boxpos.localPosition.y);
+            }
+        }
+
+        Collider2D[] collider2Ds= Physics2D.OverlapBoxAll(boxpos.position, boxSize, 0);
+        foreach(Collider2D coliider in collider2Ds)
+        {   
+            if(coliider.tag == "Player")
+            {
+                Debug.Log("Damage");
+            }
+        }
+   }
 }
