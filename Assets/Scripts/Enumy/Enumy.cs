@@ -13,6 +13,10 @@ public class Enumy : MonoBehaviour
 
     public float atkCooltime = 3;
     public float atkDelay;
+
+    public bool skillCheck = false;
+    public float skillCooltime = 1;
+    public float skillDelay ;
     private Rigidbody2D rigid2D;
     // Start is called before the first frame update
     
@@ -28,8 +32,14 @@ public class Enumy : MonoBehaviour
     }
     private void Update()
     {
+        if(skillCheck== true)
+        {
+            if(skillDelay>=0)
+                skillDelay -= Time.deltaTime;
+        }
         if(atkDelay >=0)
             atkDelay -= Time.deltaTime;
+        
         
     }
     
@@ -68,11 +78,72 @@ public class Enumy : MonoBehaviour
 
    public Transform boxpos;
    public Vector2 boxSize;
-   public void Attack(){
-    if(flip == false) //우측 모션
+
+   public void Skill()
+   {
+        if(flip == false) //우측
     {
         if(animator.GetFloat("Direction")== -1)
         {
+            
+            if(boxpos.localPosition.x>0)
+            {
+                boxpos.localPosition = new Vector2(boxpos.localPosition.x * -1,  boxpos.localPosition.y );
+            }
+        }
+        else
+        {
+            if(boxpos.localPosition.x<0)
+            {
+                boxpos.localPosition = new Vector2(Mathf.Abs(boxpos.localPosition.x), boxpos.localPosition.y);
+            }
+        }
+
+        Collider2D[] collider2Ds= Physics2D.OverlapBoxAll(boxpos.position, boxSize, 0);
+        foreach(Collider2D coliider in collider2Ds)
+        {   
+            if(coliider.tag == "Player")
+            {
+                Debug.Log("SkillDamage");
+            }
+        }
+    }
+    else //좌측 모션
+    {
+        if(animator.GetFloat("Direction")== -1)
+        {
+            if(boxpos.localPosition.x>0)
+            {
+                
+                boxpos.localPosition = new Vector2(boxpos.localPosition.x * -1,  boxpos.localPosition.y );
+                
+            }
+        }
+        else
+        {
+            if(boxpos.localPosition.x<0)
+            {
+                boxpos.localPosition = new Vector2(Mathf.Abs(boxpos.localPosition.x), boxpos.localPosition.y);
+            }
+        }
+
+        Collider2D[] collider2Ds= Physics2D.OverlapBoxAll(boxpos.position, boxSize, 0);
+        foreach(Collider2D coliider in collider2Ds)
+        {   
+            if(coliider.tag == "Player")
+            {
+                Debug.Log("SkillDamage");
+            }
+        }
+    }
+
+   }
+   public void Attack(){
+    if(flip == false) //우측
+    {
+        if(animator.GetFloat("Direction")== -1)
+        {
+            
             if(boxpos.localPosition.x>0)
             {
                 boxpos.localPosition = new Vector2(boxpos.localPosition.x * -1,  boxpos.localPosition.y );
@@ -102,14 +173,15 @@ public class Enumy : MonoBehaviour
             if(boxpos.localPosition.x>0)
             {
                 
-                boxpos.localPosition = new Vector2(Mathf.Abs(boxpos.localPosition.x), boxpos.localPosition.y);
+                boxpos.localPosition = new Vector2(boxpos.localPosition.x * -1,  boxpos.localPosition.y );
+               
             }
         }
         else
         {
             if(boxpos.localPosition.x<0)
             {
-                boxpos.localPosition = new Vector2(boxpos.localPosition.x * -1,  boxpos.localPosition.y );
+                boxpos.localPosition = new Vector2(Mathf.Abs(boxpos.localPosition.x), boxpos.localPosition.y);
             }
         }
 
