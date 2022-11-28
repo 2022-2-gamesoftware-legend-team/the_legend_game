@@ -7,18 +7,21 @@ TagManager:
   - Enemy
   - ScoreManager
   - NetworkManager
-  - Item
   - Trap
+  - Item
+  - JumpItem
+  - Enumy
+  - Revival
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Trap
+  - Ladder
+  - Player
   - 
   - 
   - 
