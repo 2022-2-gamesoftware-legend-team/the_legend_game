@@ -106,12 +106,6 @@ public class Player : NetworkBehaviour
                 AttackADone = true;
             }
 
-            if (anim.GetCurrentAnimatorStateInfo(0).IsName("AttackA") &&
-                anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
-            {
-                Attacking = false;
-            }
-
             // AttackB
             if (Input.GetButtonDown("Fire2") && AttackBDone == true && Attacking == false)
             {
@@ -138,8 +132,7 @@ public class Player : NetworkBehaviour
                 AttackBDone = true;
             }
 
-            if (anim.GetCurrentAnimatorStateInfo(0).IsName("AttackB") &&
-                anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+            if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
             {
                 Attacking = false;
             }
