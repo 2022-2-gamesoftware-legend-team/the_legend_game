@@ -2,104 +2,74 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enumy : MonoBehaviour
+public class Boss : MonoBehaviour
 {
     public Transform player;
-    public bool flip = true;
-    Animator animator;
-    public float speed = 1.5f;
+    public bool flip = false;
+    private Animator animator;
+    public float speed = 3.5f;
     private SpriteRenderer spriteRenderer;
     public Vector2 home;
-
-    public float atkCooltime = 3;
+    public float atkCooltime = 1f;
     public float atkDelay;
+
+    
+    public float skillCooltime = 2f;
+    public float skillDelay ;
+
+    public float skill2Cooltime = 2.5f;
+    public float skill2Delay ;
     private Rigidbody2D rigid2D;
     private PlayerControl playercontrol;
-
-     public int enumyHp = 3;
-    public bool enumyDie = false;
+    public GameObject boss;
+    public int bossHp = 10;
+    public bool bossDie = false;
     public System.Action onDie;
-
-    public GameObject itemPrefabHp;
-    public GameObject itemPrefabRe;
-    public GameObject itemPrefabJump;
-    private string category ;
+       ItemDrop itemDrop;
     // Start is called before the first frame update
+    
     
         
     
     void Awake()
     {
-        animator = GetComponent<Animator>();
+        this.animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         spriteRenderer = GetComponent<SpriteRenderer>();
         home = transform.position;
         rigid2D = GetComponent<Rigidbody2D>();
         playercontrol = GetComponent<PlayerControl>();
-        
+        // itemDrop = GetComponent<ItemDrop>();
     }
+
+   
     private void Update()
     {
+    
+        if(skillDelay>=0)
+            skillDelay -= Time.deltaTime;
+
+        if(skill2Delay>=0)
+            skill2Delay -= Time.deltaTime;
         
         if(atkDelay >=0)
             atkDelay -= Time.deltaTime;
 
-        if(this.enumyHp <=0 && this.enumyDie == false) //체력이 0이되어서 죽음
+        if(bossHp <=0&&  bossDie == false)
         {
-            StartCoroutine(Die()); 
-        }
-        a_RandNum = Random.Range(0, 2); 
-        b_RandNum = Random.Range(0, 100); 
+            StartCoroutine(BossDie());
+        }        
     }
-    IEnumerator Die() {
+    
+    IEnumerator BossDie() {
         this.animator.SetTrigger("Die");
-        this.enumyDie = true;
-        this.RandomItem();
+        this.bossDie = true;
         yield return new WaitForSeconds(0.5f);
-        this.DropItem();
         Destroy(gameObject);
     }    
     
-    public void DropItem()
-    {
-        // var itemGo = Instantiate<GameObject>(this.itemPrefab);
-        // itemGo.transform.position = this.gameObject.transform.position;
-        // itemGo.SetActive(false);
-        // this.onDie = () =>
-        // {
-        //     itemGo.SetActive(true);
-        // };
-        
-        if(this.category =="HpItem")
-        {
-            Debug.Log("HP");
-            var itemGoHp = Instantiate<GameObject>(this.itemPrefabHp);
-            itemGoHp.transform.position = this.gameObject.transform.position;
-            itemGoHp.SetActive(true);
-           
-        }
-        else if(this.category =="RevivalItem")
-        {
-            Debug.Log("Revi");
-            var itemGoRe = Instantiate<GameObject>(this.itemPrefabRe);
-            itemGoRe.transform.position = this.gameObject.transform.position;
-            itemGoRe.SetActive(true);
-            
-        }
-        else if(this.category =="jumpItem")
-        {
-            Debug.Log("Jump");
-            var itemGoJump = Instantiate<GameObject>(this.itemPrefabJump);
-            itemGoJump.transform.position = this.gameObject.transform.position;
-            itemGoJump.SetActive(true);
-
-        }
-        else{
-            Debug.Log("No Item");
-            category = "";
-        }
-    }    
-   public void DirectionEnemy(float target, float baseobj)
+    
+   public void DirectionBoss(float target, float baseobj)
    {
         if(flip == true) // 우측 시작
         {
@@ -164,6 +134,38 @@ public class Enumy : MonoBehaviour
     }
 
    }
+
+  
+
+   public void Skill2()
+   {
+    if(animator.GetFloat("Direction")== -1)
+    {
+        
+        if(boxpos.localPosition.x>0)
+        {
+            boxpos.localPosition = new Vector2(boxpos.localPosition.x * -1,  boxpos.localPosition.y );
+        }
+    }
+    else
+    {
+        if(boxpos.localPosition.x<0)
+        {
+            boxpos.localPosition = new Vector2(Mathf.Abs(boxpos.localPosition.x), boxpos.localPosition.y);
+        }
+    }
+
+    Collider2D[] collider2Ds= Physics2D.OverlapBoxAll(boxpos.position, boxSize, 0);
+    foreach(Collider2D coliider in collider2Ds)
+    {   
+        if(coliider.tag == "Player")
+        {
+            // playercontrol.hpPoint --;
+            Debug.Log("Skill2Damage");
+        }
+    }
+
+   }
    public void Attack(){
    
         if(animator.GetFloat("Direction")== -1)
@@ -193,30 +195,4 @@ public class Enumy : MonoBehaviour
             }
         }
    }
-   public int a_RandNum;
-   public int b_RandNum;
-   void RandomItem()
-    {
-        
-        if(b_RandNum%5==0)
-        {
-            if(a_RandNum ==0) //체력 포션
-            {
-                category = "HpItem";
-            }
-            else if(a_RandNum ==1) //더블 점프
-            {
-                category =  "jumpItem";
-            }
-            else if(a_RandNum ==2) // 부활 점프
-            {
-                category = "revivalItem";
-            }
-            else
-                category=  "NoItem";
-        }
-        else
-            category =  "NoItem";
-    
-    }
 }

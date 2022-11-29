@@ -8,6 +8,8 @@ TagManager:
   - JumpItem
   - Enumy
   - Revival
+  - Boss
+  - ItemManager
   layers:
   - Default
   - TransparentFX
