@@ -16,9 +16,8 @@ public class Enumy : MonoBehaviour
     private Rigidbody2D rigid2D;
     private PlayerControl playercontrol;
 
-     public int enumyHp = 3;
+    public int enumyHp = 3;
     public bool enumyDie = false;
-    public System.Action onDie;
 
     public GameObject itemPrefabHp;
     public GameObject itemPrefabRe;
@@ -62,13 +61,6 @@ public class Enumy : MonoBehaviour
     
     public void DropItem()
     {
-        // var itemGo = Instantiate<GameObject>(this.itemPrefab);
-        // itemGo.transform.position = this.gameObject.transform.position;
-        // itemGo.SetActive(false);
-        // this.onDie = () =>
-        // {
-        //     itemGo.SetActive(true);
-        // };
         
         if(this.category =="HpItem")
         {
@@ -127,9 +119,17 @@ public class Enumy : MonoBehaviour
                 spriteRenderer.flipX = false;
             }
         }
+   }
 
-        
-            
+   public void Hit()
+   {
+    if(enumyHp>0){
+        enumyHp--;
+    }
+    if(enumyHp<=0 && enumyDie ==false)
+    {
+        StartCoroutine(Die()); 
+    }
    }
 
    public Transform boxpos;

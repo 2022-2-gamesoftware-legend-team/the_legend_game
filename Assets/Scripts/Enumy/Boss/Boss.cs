@@ -136,7 +136,16 @@ public class Boss : MonoBehaviour
    }
 
   
-
+    public void Hit()
+   {
+    if(bossHp>0){
+        bossHp--;
+    }
+    if(bossHp<=0 && bossDie ==false)
+    {
+        StartCoroutine(BossDie()); 
+    }
+   }
    public void Skill2()
    {
     if(animator.GetFloat("Direction")== -1)
