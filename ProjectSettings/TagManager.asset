@@ -16,8 +16,8 @@ TagManager:
   - Trap
   - Ladder
   - Box
-  - 
-  - 
+  - Player
+  - AttackCollider
   - 
   - 
   - 
