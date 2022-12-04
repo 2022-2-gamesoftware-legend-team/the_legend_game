@@ -5,6 +5,8 @@ using Mirror;
 
 public class Player : NetworkBehaviour
 {
+    public GameManager gameManager;
+
     // player status
     public string playerName;
     public int HP;
@@ -149,8 +151,8 @@ public class Player : NetworkBehaviour
     {
         if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Boss")
         {
-            HP -= 1; // Àû°ú Ãæµ¹½Ã Ã¼·Â -1;
-            anim.SetTrigger("isHit"); // ÇÇ°Ý ¾Ö´Ï¸ÞÀÌ¼Ç Àç»ý
+            HP -= 1; // ï¿½ï¿½ï¿½ï¿½ ï¿½æµ¹ï¿½ï¿½ Ã¼ï¿½ï¿½ -1;
+            anim.SetTrigger("isHit"); // ï¿½Ç°ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½
 
             if (HP == 0)
             {
@@ -158,10 +160,23 @@ public class Player : NetworkBehaviour
             }
         }
 
-        // ¹Ù´Ú°ú Á¢ÃË½Ã isJumping = false
+        // ï¿½Ù´Ú°ï¿½ ï¿½ï¿½ï¿½Ë½ï¿½ isJumping = false
         if (collision.gameObject.name == "Ground")
         {
             anim.SetBool("isJumping", false);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Finish")
+        {
+            gameManager.NextStage();
+        }
+    }
+    public void VelocityZero()
+    {
+        rigid.velocity = Vector2.zero;
+    }
+
 }
