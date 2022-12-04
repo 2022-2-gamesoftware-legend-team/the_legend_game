@@ -12,6 +12,7 @@ TagManager:
   - JumpItem
   - Enumy
   - Revival
+  - Ladder
   layers:
   - Default
   - TransparentFX
