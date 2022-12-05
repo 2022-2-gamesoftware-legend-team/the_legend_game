@@ -5,6 +5,8 @@ using Mirror;
 
 public class Player : NetworkBehaviour
 {
+    public GameManager gameManager;
+
     // player status
     public string playerName;
     public int HP;
@@ -172,4 +174,17 @@ public class Player : NetworkBehaviour
             anim.SetBool("isJumping", false);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Finish")
+        {
+            gameManager.NextStage();
+        }
+    }
+    public void VelocityZero()
+    {
+        rigid.velocity = Vector2.zero;
+    }
+
 }
