@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 345160451295100357}
   - component: {fileID: 345160451295100356}
   - component: {fileID: 345160451295100359}
+  - component: {fileID: 4500048154604805535}
   m_Layer: 5
   m_Name: SelectMaceman
   m_TagString: Untagged
@@ -122,6 +123,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4500048154604805535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345160451295100377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89b5875e78b838043a6c80b390ba5a4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &345160451904714280
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,6 +283,7 @@ GameObject:
   - component: {fileID: 345160452098969633}
   - component: {fileID: 345160452098969632}
   - component: {fileID: 345160452098969635}
+  - component: {fileID: 3974473342209740159}
   m_Layer: 5
   m_Name: SelectSpearman
   m_TagString: Untagged
@@ -390,6 +404,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 474367199f8b3a34ab347c291d385c0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3974473342209740159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345160452098969637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d687682934530704ead3e1cb8702aa7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &345160452141389798
@@ -848,6 +874,7 @@ GameObject:
   - component: {fileID: 345160452988806539}
   - component: {fileID: 345160452988806538}
   - component: {fileID: 345160452988806541}
+  - component: {fileID: 3670432912889425427}
   m_Layer: 5
   m_Name: SelectSwordman
   m_TagString: Untagged
@@ -958,3 +985,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3670432912889425427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345160452988806543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f926da1d112e8248a4738abf717288d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
