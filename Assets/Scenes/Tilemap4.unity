@@ -260,7 +260,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8.034627
+  orthographic size: 6.4130645
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -284,7 +284,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1050567853}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.5, y: 0.11, z: -10}
+  m_LocalPosition: {x: 24.19, y: -1.93, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1054,11 +1054,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4787997053728500686, guid: a84b1913c562c4f72b05dc857345ad62, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23.59
+      value: 21.17
       objectReference: {fileID: 0}
     - target: {fileID: 4787997053728500686, guid: a84b1913c562c4f72b05dc857345ad62, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.66
+      value: -4.12
       objectReference: {fileID: 0}
     - target: {fileID: 4787997053728500686, guid: a84b1913c562c4f72b05dc857345ad62, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1160,6 +1160,10 @@ PrefabInstance:
     - target: {fileID: 7150466804257759787, guid: ec31237b9b5464b1dafe19525590e42c, type: 3}
       propertyPath: m_Name
       value: Enumy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7150466804257759788, guid: ec31237b9b5464b1dafe19525590e42c, type: 3}
+      propertyPath: flip
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7150466804257759789, guid: ec31237b9b5464b1dafe19525590e42c, type: 3}
       propertyPath: paths.Array.data[0]
@@ -1289,6 +1293,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9029576633733681626, guid: b90f2c2e3188c421f8bb539c6eb9a398, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9029576633733681627, guid: b90f2c2e3188c421f8bb539c6eb9a398, type: 3}
+      propertyPath: flip
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

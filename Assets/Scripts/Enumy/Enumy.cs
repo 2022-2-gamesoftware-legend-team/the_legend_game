@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enumy : MonoBehaviour
 {
     public Transform player;
-    public bool flip = true;
+    public bool flip = false;
     Animator animator;
     public float speed = 1.5f;
     private SpriteRenderer spriteRenderer;
@@ -198,7 +198,7 @@ public class Enumy : MonoBehaviour
    void RandomItem()
     {
         
-        if(b_RandNum%5==0)
+        if(b_RandNum%2==0)
         {
             if(a_RandNum ==0) //체력 포션
             {
