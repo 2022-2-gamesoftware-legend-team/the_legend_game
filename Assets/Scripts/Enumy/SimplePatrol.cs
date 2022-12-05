@@ -46,8 +46,6 @@ public class SimplePatrol : MonoBehaviour
                     flag = true;
                     spriteRenderer.flipX = (flag);
                 }
-            
-            
             }
         }
         else
