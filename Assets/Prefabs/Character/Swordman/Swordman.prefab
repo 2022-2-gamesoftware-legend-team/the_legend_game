@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 768173739036863769}
   - component: {fileID: 5685128569915440262}
   - component: {fileID: 8259344406992573717}
+  - component: {fileID: -2017129411607830533}
   m_Layer: 9
   m_Name: Swordman
   m_TagString: Player
@@ -187,10 +188,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncDirection: 0
+  syncDirection: 1
   syncMode: 0
   syncInterval: 0.1
-  clientAuthority: 0
+  clientAuthority: 1
   animator: {fileID: 5880483030116523250}
 --- !u!114 &5685128569915440262
 MonoBehaviour:
@@ -204,11 +205,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab2cbc52526ea384ba280d13cd1a57b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncDirection: 0
+  syncDirection: 1
   syncMode: 0
   syncInterval: 0.1
   target: {fileID: 7506791946883308514}
-  clientAuthority: 0
+  clientAuthority: 1
   syncVelocity: 1
   clearVelocity: 0
   velocitySensitivity: 0.1
@@ -245,3 +246,31 @@ MonoBehaviour:
   AttackAflipFactroy: {fileID: 4807597954008327822, guid: 609dd96d13684384fb39563f6fd5aa1e, type: 3}
   AttackBFactory: {fileID: 8665940090668108852, guid: c88cf1ef7a088a14d944043eed145baa, type: 3}
   AttackBflipFactory: {fileID: 4001788625759420407, guid: d8aa0ff3b97740948bb096a274d67ea7, type: 3}
+--- !u!114 &-2017129411607830533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2686332217566073597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0
+  target: {fileID: 3507340597628172853}
+  clientAuthority: 0
+  onlySyncOnChange: 1
+  bufferResetMultiplier: 5
+  positionSensitivity: 0.01
+  rotationSensitivity: 0.01
+  scaleSensitivity: 0.01
+  syncPosition: 1
+  syncRotation: 1
+  syncScale: 0
+  showGizmos: 0
+  showOverlay: 0
+  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}

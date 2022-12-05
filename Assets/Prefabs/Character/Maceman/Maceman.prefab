@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 722436529633135778}
   - component: {fileID: 5390827753955187163}
   - component: {fileID: 8721548468909588480}
+  - component: {fileID: -1392806464442213099}
   m_Layer: 9
   m_Name: Maceman
   m_TagString: Player
@@ -187,10 +188,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncDirection: 0
+  syncDirection: 1
   syncMode: 0
   syncInterval: 0.1
-  clientAuthority: 0
+  clientAuthority: 1
   animator: {fileID: 4981350819916030064}
 --- !u!114 &5390827753955187163
 MonoBehaviour:
@@ -204,11 +205,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab2cbc52526ea384ba280d13cd1a57b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncDirection: 0
+  syncDirection: 1
   syncMode: 0
   syncInterval: 0.1
   target: {fileID: 6650126011182611565}
-  clientAuthority: 0
+  clientAuthority: 1
   syncVelocity: 1
   clearVelocity: 0
   velocitySensitivity: 0.1
@@ -245,3 +246,31 @@ MonoBehaviour:
   AttackAflipFactroy: {fileID: 222231583202357666, guid: 9348a2b63d8e1a7418bb7e9c8ccd53cd, type: 3}
   AttackBFactory: {fileID: 8620888585658007783, guid: 04eddf7de8bcf5e4fac9d233ec188296, type: 3}
   AttackBflipFactory: {fileID: 145236097433875287, guid: 5e5baf39ba6268847827ab8acbc58c82, type: 3}
+--- !u!114 &-1392806464442213099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6487761426273118129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0
+  target: {fileID: 2883176197452452648}
+  clientAuthority: 0
+  onlySyncOnChange: 1
+  bufferResetMultiplier: 5
+  positionSensitivity: 0.01
+  rotationSensitivity: 0.01
+  scaleSensitivity: 0.01
+  syncPosition: 1
+  syncRotation: 1
+  syncScale: 0
+  showGizmos: 0
+  showOverlay: 0
+  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
