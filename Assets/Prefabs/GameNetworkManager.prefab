@@ -49,18 +49,26 @@ MonoBehaviour:
   dontDestroyOnLoad: 1
   runInBackground: 1
   autoStartServerBuild: 1
-  serverTickRate: 30
+  autoConnectClientBuild: 0
+  sendRate: 30
   offlineScene: 
-  onlineScene: 
+  onlineScene: Assets/Scenes/Stage1.unity
   transport: {fileID: 715003857399663584}
   networkAddress: localhost
   maxConnections: 100
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 8996526953440462208, guid: 653e69036593fbd459c985e33fed31bb, type: 3}
+  playerPrefab: {fileID: 2686332217566073597, guid: 977006d15d95b1147bd1f4beae20e6f5, type: 3}
   autoCreatePlayer: 0
   playerSpawnMethod: 0
   spawnPrefabs:
   - {fileID: 3987940892708866854, guid: 897ff4de50990144ba4f83eba47609e6, type: 3}
+  - {fileID: 478531637320312202, guid: 9144bfb405b97d34491f922568aa8240, type: 3}
+  - {fileID: 6487761426273118129, guid: aa67672b2452ee94991bbb8c1ea7ee26, type: 3}
+  - {fileID: 7150466804257759787, guid: ec31237b9b5464b1dafe19525590e42c, type: 3}
+  - {fileID: 9029576633733681603, guid: b90f2c2e3188c421f8bb539c6eb9a398, type: 3}
+  - {fileID: 4787997053728500721, guid: a84b1913c562c4f72b05dc857345ad62, type: 3}
+  - {fileID: 7951253865747510976, guid: c0bd81cbb588d4fa0a6a237bb7075088, type: 3}
+  timeInterpolationGui: 0
   PlayerCharacterType: 1
 --- !u!114 &715003857399663584
 MonoBehaviour:
