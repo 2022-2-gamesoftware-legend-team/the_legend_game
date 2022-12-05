@@ -3,7 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
+<<<<<<< HEAD
   tags: []
+=======
+  tags:
+  - Enemy
+  - ScoreManager
+  - NetworkManager
+  - Trap
+  - Item
+  - JumpItem
+  - Enumy
+  - Revival
+>>>>>>> origin/Feat_multiplayer
   layers:
   - Default
   - TransparentFX
