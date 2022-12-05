@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 8424894758367286753}
   - component: {fileID: -3012911890425634876}
   - component: {fileID: 7569862359903054043}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Spearman
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -232,6 +232,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0.1
+  gameManager: {fileID: 0}
   playerName: 
   HP: 0
   maxSpeed: 3
@@ -240,6 +241,7 @@ MonoBehaviour:
   AttackBDone: 0
   Attacking: 0
   immune: 0
+  inLadder: 0
   anim: {fileID: 6163304784116830473}
   rigid: {fileID: 6567579441867888388}
   SpriteRenderer: {fileID: 3315156316927136356}

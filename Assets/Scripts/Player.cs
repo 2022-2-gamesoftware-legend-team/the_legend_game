@@ -16,6 +16,7 @@ public class Player : NetworkBehaviour
     public bool AttackBDone;
     public bool Attacking;
     public bool immune;
+    public bool inLadder;
 
     // player components
     public Animator anim;
@@ -36,6 +37,7 @@ public class Player : NetworkBehaviour
         AttackBDone = true;
         Attacking = false;
         immune = false;
+        inLadder = false;
     }
 
     // Update is called once per frame
@@ -136,26 +138,36 @@ public class Player : NetworkBehaviour
                 Attacking = false;
             }
 
-            if(HP > 5)
+            if (HP > 5)
             {
                 HP = 5;
             }
         }
     }
 
-    public void FlipX(bool b){
-        if (isServer) {
+    public void FlipX(bool b)
+    {
+        if (isServer)
+        {
             SpriteRenderer.flipX = b;
-        } else {
+        }
+        else
+        {
             CmdFlipX(b);
         }
     }
     private void FixedUpdate()
     {
+        float k = Input.GetAxisRaw("Vertical");
+        if (k != 0)
+        {
+            Ladder(k);
+        }
     }
 
     [Command]
-    public void CmdFlipX(bool b) {
+    public void CmdFlipX(bool b)
+    {
         SpriteRenderer.flipX = b;
     }
 
@@ -186,10 +198,54 @@ public class Player : NetworkBehaviour
         {
             gameManager.NextStage();
         }
+
+        if (collision.gameObject.tag == "Ladder")
+        {
+            inLadder = true;
+        }
     }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Ladder")
+        {
+            LadderOut();
+        }
+    }
+
     public void VelocityZero()
     {
         rigid.velocity = Vector2.zero;
     }
+
+    void Ladder(float k)
+    {
+        if (this.inLadder)
+        {
+            rigid.velocity = new Vector2(0, 0);
+            rigid.gravityScale = 0;
+            this.gameObject.layer = 4;
+            if (k > 0)
+            {
+                Debug.Log("k up");
+                rigid.velocity = new Vector2(rigid.velocity.x, maxSpeed);
+            }
+            if (k < 0)
+            {
+                Debug.Log("k down");
+                rigid.velocity = new Vector2(rigid.velocity.x, maxSpeed * (-1));
+            }
+        }
+    }
+
+    void LadderOut()
+    {
+        Debug.Log("ladder out");
+        this.rigid.gravityScale = 1;
+        this.gameObject.layer = 8;
+        inLadder = false;
+    }
+
+
 
 }

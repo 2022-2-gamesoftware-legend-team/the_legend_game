@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 5685128569915440262}
   - component: {fileID: 8259344406992573717}
   - component: {fileID: -2017129411607830533}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Swordman
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -231,6 +231,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0.1
+  gameManager: {fileID: 0}
   playerName: 
   HP: 0
   maxSpeed: 3
@@ -239,6 +240,7 @@ MonoBehaviour:
   AttackBDone: 0
   Attacking: 0
   immune: 0
+  inLadder: 0
   anim: {fileID: 5880483030116523250}
   rigid: {fileID: 7506791946883308514}
   SpriteRenderer: {fileID: 4653657947388796586}
