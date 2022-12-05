@@ -136,6 +136,11 @@ public class Player : NetworkBehaviour
             {
                 Attacking = false;
             }
+
+            if(HP > 5)
+            {
+                HP = 5;
+            }
         }
     }
 
