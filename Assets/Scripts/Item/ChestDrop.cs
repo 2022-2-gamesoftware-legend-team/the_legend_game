@@ -28,7 +28,7 @@ public class ChestDrop : MonoBehaviour
         {
             StartCoroutine(Die()); 
         }
-        a_RandNum = Random.Range(0, 2); 
+        a_RandNum = Random.Range(0, 3); 
         b_RandNum = Random.Range(0, 100); 
     }
     IEnumerator Die() {
