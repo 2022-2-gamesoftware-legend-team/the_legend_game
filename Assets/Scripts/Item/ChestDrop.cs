@@ -13,6 +13,12 @@ public class ChestDrop : MonoBehaviour
     public GameObject itemPrefabRe;
     public GameObject itemPrefabJump;
     private string category ;
+    private Animator animator;
+
+    void Awak()
+    {
+        this.animator = GetComponent<Animator>();
+    }
 
 
     private void Update()
@@ -26,7 +32,7 @@ public class ChestDrop : MonoBehaviour
         b_RandNum = Random.Range(0, 100); 
     }
     IEnumerator Die() {
-        // this.animator.SetTrigger("Die");
+        // this.animator.SetBool("isOpen", true);
         this.chestDie = true;
         this.RandomItem();
         yield return new WaitForSeconds(0.5f);

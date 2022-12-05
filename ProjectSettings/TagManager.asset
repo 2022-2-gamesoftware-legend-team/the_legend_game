@@ -3,23 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Item
-  - JumpItem
-  - Enumy
-  - Revival
-  - Boss
-  - ItemManager
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - 
   - Water
   - UI
-  - Trap
-  - Ladder
-  - Player
+  - 
+  - 
+  - 
   - 
   - 
   - 
