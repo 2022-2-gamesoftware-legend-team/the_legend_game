@@ -4,8 +4,14 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Enemy
+  - ScoreManager
+  - NetworkManager
   - Trap
-  - Ladder
+  - Item
+  - JumpItem
+  - Enumy
+  - Revival
   layers:
   - Default
   - TransparentFX
@@ -15,9 +21,9 @@ TagManager:
   - UI
   - Trap
   - Ladder
-  - Box
   - Player
-  - AttackCollider
+  - 
+  - 
   - 
   - 
   - 
