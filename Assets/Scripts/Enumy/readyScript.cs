@@ -16,6 +16,7 @@ public class readyScript : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+      
         if(enemy.atkDelay<=0)
             animator.SetTrigger("Attack");
         if(Vector2.Distance(enemy.player.position, enemyTransform.position)> 3.5f)
