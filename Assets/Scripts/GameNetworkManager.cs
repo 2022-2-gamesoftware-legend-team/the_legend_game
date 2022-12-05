@@ -15,7 +15,7 @@ public class GameNetworkManager : NetworkManager
     public override void OnStartServer()
     {
         base.OnStartServer();
-        // NetworkServer.RegisterHandler<CreatePlayerMessage>(OnCreatePlayer);
+        NetworkServer.RegisterHandler<CreatePlayerMessage>(OnCreatePlayer);
         print("Server");
         NetworkServer.Spawn(Instantiate(spawnPrefabs[0])); // Score 동기화 GameObject 스폰
     }
@@ -36,27 +36,35 @@ public class GameNetworkManager : NetworkManager
         NetworkClient.Send(createPlayerMessage);
     }
 
+    public override void OnServerSceneChanged(string sceneName)
+    {
+        base.OnServerSceneChanged(sceneName);
+        print(sceneName);
+    }
+
     void OnCreatePlayer(NetworkConnectionToClient conn, CreatePlayerMessage msg)
     {
         // 선택한 플레이어 스폰
-        int spawnPrefabsIndex = -1;
+        GameObject player = playerPrefab;
         // set swawnPrefabs index
         switch (msg.type)
         {
             case 1:
-                spawnPrefabsIndex = 1;
                 break;
             case 2:
-                spawnPrefabsIndex = 2;
+                player = spawnPrefabs[1];
                 break;
             case 3:
-                spawnPrefabsIndex = 3;
+                player = spawnPrefabs[2];
                 break;
             default:
-                spawnPrefabsIndex = 1;
                 break;
         }
-        GameObject gameObject = Instantiate(spawnPrefabs[spawnPrefabsIndex]);
-        NetworkServer.AddPlayerForConnection(conn, gameObject);
+        GameObject playerObject = Instantiate(player);
+        NetworkServer.AddPlayerForConnection(conn, playerObject);
+    }
+
+    public void SelectPlayer(int player) {
+        PlayerCharacterType = player;
     }
 }
