@@ -3,29 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-<<<<<<< HEAD
-  tags: []
-=======
   tags:
-  - Enemy
-  - ScoreManager
-  - NetworkManager
   - Trap
-  - Item
-  - JumpItem
-  - Enumy
-  - Revival
->>>>>>> origin/Feat_multiplayer
+  - Ladder
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Trap
+  - Ladder
+  - Player
   - 
   - 
   - 
