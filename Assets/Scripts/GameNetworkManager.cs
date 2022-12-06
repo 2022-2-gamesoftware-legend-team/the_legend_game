@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Mirror;
 
 public struct CreatePlayerMessage : NetworkMessage
@@ -12,9 +13,14 @@ public class GameNetworkManager : NetworkManager
 {
 
     public int PlayerCharacterType = 1;
+
+    int currentStage = 1;
+
+    bool serverStagesLoaded = false;
+
+    readonly List<Scene> stages = new List<Scene>();
     public override void OnStartServer()
     {
-        base.OnStartServer();
         NetworkServer.RegisterHandler<CreatePlayerMessage>(OnCreatePlayer);
         print("Server");
         if (GameObject.FindGameObjectWithTag("ScoreManager") == null) {
@@ -43,6 +49,16 @@ public class GameNetworkManager : NetworkManager
     {
         base.OnServerSceneChanged(sceneName);
         print(sceneName);
+        if (sceneName.Contains("Online")) {
+            StartCoroutine(ServerLoadStages());
+        }
+    }
+
+    IEnumerator ServerLoadStages() {
+        for (int stage = 1; stage<=5;stage++) {
+            yield return SceneManager.LoadSceneAsync(stage, new LoadSceneParameters {loadSceneMode = LoadSceneMode.Additive, localPhysicsMode = LocalPhysicsMode.Physics2D});
+        }
+        serverStagesLoaded = true;
     }
 
     void OnCreatePlayer(NetworkConnectionToClient conn, CreatePlayerMessage msg)
@@ -63,7 +79,8 @@ public class GameNetworkManager : NetworkManager
             default:
                 break;
         }
-        GameObject playerObject = Instantiate(player);
+        GameObject playerObject = Instantiate(player, GetStartPosition());
+        playerObject.transform.SetParent(null);
         NetworkServer.AddPlayerForConnection(conn, playerObject);
     }
 
@@ -72,20 +89,9 @@ public class GameNetworkManager : NetworkManager
     }
 
     public void NextStage() {
-        string currentScene = networkSceneName;
-        string nextScene = "Stage1";
-        if (currentScene.Contains("Stage1")) {
-            nextScene = "Stage2";
-        } else if(currentScene.Contains("Stage2")) {
-            nextScene = "Stage3";
-        } else if(currentScene.Contains("Stage3")) {
-            nextScene = "Tilemap4";
-        } else if(currentScene.Contains("Tilemap4")) {
-            nextScene = "Stage5";
-        } else if(currentScene.Contains("Stage5")) {
-            print("All Stage Finished.");
-        }
-        ServerChangeScene("Assets/Scenes/" + nextScene + ".unity");
+        string nextStageName = SceneUtility.GetScenePathByBuildIndex(currentStage + 1);
+        currentStage++;
+        ServerChangeScene(nextStageName);
     }
 
     public float[] GetCameraBoundary() {
@@ -129,7 +135,7 @@ public class GameNetworkManager : NetworkManager
         {
             NetworkIdentity playerIdentity = player.GetComponent<NetworkIdentity>();
             if (playerIdentity.isLocalPlayer) {
-                player.GetComponent<Player>().RpcServerSceneChanged();
+                player.GetComponent<Player>().ServerSceneChanged();
             }
         }
 
@@ -139,5 +145,7 @@ public class GameNetworkManager : NetworkManager
     {
         base.OnServerChangeScene(newSceneName);
         print("Server OnServerChangeScene");
+        
     }
+
 }
