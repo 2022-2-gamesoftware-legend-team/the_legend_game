@@ -38,6 +38,16 @@ public class Player : NetworkBehaviour
         Attacking = false;
         immune = false;
         inLadder = false;
+
+        // only Local Player can use Camera Move
+        if (isLocalPlayer) {
+            if (GetComponent<CameraMove>() == null) {
+                float[] cameraBoundary = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<GameNetworkManager>().GetCameraBoundary();
+                CameraMove cameraMove = gameObject.AddComponent<CameraMove>();
+                cameraMove.minCameraBoundary = new Vector2(cameraBoundary[0], cameraBoundary[1]);
+                cameraMove.maxCameraBoundary = new Vector2(cameraBoundary[2], cameraBoundary[3]);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -169,6 +179,19 @@ public class Player : NetworkBehaviour
     public void CmdFlipX(bool b)
     {
         SpriteRenderer.flipX = b;
+    }
+
+    [ClientRpc]
+    public void RpcServerSceneChanged() {
+        if (isLocalPlayer) {
+            transform.Translate(new Vector3(0, 0, -1));
+            if (GetComponent<CameraMove>() == null) {
+                float[] cameraBoundary = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<GameNetworkManager>().GetCameraBoundary();
+                CameraMove cameraMove = gameObject.GetComponent<CameraMove>();
+                cameraMove.minCameraBoundary = new Vector2(cameraBoundary[0], cameraBoundary[1]);
+                cameraMove.maxCameraBoundary = new Vector2(cameraBoundary[2], cameraBoundary[3]);
+            }
+        }
     }
 
     [ServerCallback]
