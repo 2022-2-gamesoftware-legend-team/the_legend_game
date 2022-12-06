@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 5685128569915440262}
   - component: {fileID: 8259344406992573717}
   - component: {fileID: -2017129411607830533}
+  - component: {fileID: 3676567738557266529}
   m_Layer: 8
   m_Name: Swordman
   m_TagString: Player
@@ -276,3 +277,18 @@ MonoBehaviour:
   showGizmos: 0
   showOverlay: 0
   overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+--- !u!114 &3676567738557266529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2686332217566073597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eae769acf138d934f98ffbd5b5d1fd26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0.1

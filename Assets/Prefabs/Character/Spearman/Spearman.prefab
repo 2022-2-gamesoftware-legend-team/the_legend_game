@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 8424894758367286753}
   - component: {fileID: -3012911890425634876}
   - component: {fileID: 7569862359903054043}
+  - component: {fileID: 8058946384413917509}
   m_Layer: 8
   m_Name: Spearman
   m_TagString: Player
@@ -305,3 +306,18 @@ MonoBehaviour:
   showGizmos: 0
   showOverlay: 0
   overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+--- !u!114 &8058946384413917509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478531637320312202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eae769acf138d934f98ffbd5b5d1fd26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0.1
