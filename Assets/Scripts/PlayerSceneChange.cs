@@ -19,11 +19,13 @@ public class PlayerSceneChange : NetworkBehaviour
 
     [ServerCallback]
     void OnTriggerEnter2D(Collider2D collider) {
-        GameNetworkManager gameNetworkManager = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<GameNetworkManager>();
-        if (gameNetworkManager) {
-            gameNetworkManager.NextStage();
-        } else {
-            print("Error: GameNetworkManager not found.");
+        if (collider.tag == "Finish") {
+            GameNetworkManager gameNetworkManager = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<GameNetworkManager>();
+            if (gameNetworkManager) {
+                gameNetworkManager.NextStage();
+            } else {
+                print("Error: GameNetworkManager not found.");
+            }
         }
     }
 }
