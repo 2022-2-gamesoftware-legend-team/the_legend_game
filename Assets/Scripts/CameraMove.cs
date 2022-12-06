@@ -21,6 +21,10 @@ public class CameraMove : MonoBehaviour
         Vector3 targetPos = new Vector3(this.transform.position.x, this.transform.position.y, -20);
         targetPos.x = Mathf.Clamp(targetPos.x, minCameraBoundary.x, maxCameraBoundary.x);
         targetPos.y = Mathf.Clamp(targetPos.y, minCameraBoundary.y, maxCameraBoundary.y);
+        if (camera == null) {
+            print("Camera Object Find");
+            camera = GameObject.FindGameObjectWithTag("MainCamera");
+        }
         camera.transform.position = Vector3.Lerp(camera.transform.position, targetPos, smoothing);
     }
 }
