@@ -15,6 +15,8 @@ TagManager:
   - Ladder
   - Boss
   - ItemManager
+  - e1Attack
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX
