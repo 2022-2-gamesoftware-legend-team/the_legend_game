@@ -179,6 +179,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 715003857399663587, guid: a78812eb215a29943841cbf8a3de8f75, type: 3}
+      propertyPath: onlineScene
+      value: Assets/Scenes/Stage1.unity
+      objectReference: {fileID: 0}
+    - target: {fileID: 715003857399663587, guid: a78812eb215a29943841cbf8a3de8f75, type: 3}
       propertyPath: offlineScene
       value: Assets/Scenes/Lobby.unity
       objectReference: {fileID: 0}
@@ -194,6 +198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1093988675}
   - component: {fileID: 1093988674}
+  - component: {fileID: 1093988676}
   - component: {fileID: 1093988673}
   m_Layer: 0
   m_Name: Main Camera
@@ -268,6 +273,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1093988676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093988672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e40b8cb18db7ff84e992e7ccd69577fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1208564881 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 715003857399663587, guid: a78812eb215a29943841cbf8a3de8f75, type: 3}
