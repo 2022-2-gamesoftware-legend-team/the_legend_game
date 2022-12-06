@@ -48,6 +48,9 @@ public class Player : NetworkBehaviour
                 cameraMove.maxCameraBoundary = new Vector2(cameraBoundary[2], cameraBoundary[3]);
             }
         }
+        
+        // prevent destroy
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
@@ -184,7 +187,9 @@ public class Player : NetworkBehaviour
     [ClientRpc]
     public void RpcServerSceneChanged() {
         if (isLocalPlayer) {
-            transform.Translate(new Vector3(0, 0, -1));
+            print("Scene Changed. Position Reset");
+            Vector3 spawnPosition = GameObject.FindGameObjectWithTag("SpawnPoint").GetComponent<Transform>().position;
+            GetComponent<Rigidbody2D>().MovePosition(new Vector2(spawnPosition.x, spawnPosition.y));
             if (GetComponent<CameraMove>() == null) {
                 float[] cameraBoundary = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<GameNetworkManager>().GetCameraBoundary();
                 CameraMove cameraMove = gameObject.GetComponent<CameraMove>();
