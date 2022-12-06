@@ -13,6 +13,7 @@ public class SyncScore : NetworkBehaviour
 
     void Start() {
         print("ScoreManager Start");
+        DontDestroyOnLoad(gameObject);
     }
 
     public override void OnStartServer() {
