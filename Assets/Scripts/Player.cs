@@ -9,7 +9,11 @@ public class Player : NetworkBehaviour
 
     // player status
     public string playerName;
+
+    [SyncVar]
     public int HP;
+
+    public readonly SyncSortedSet<int> Items = new SyncSortedSet<int>();
     public float maxSpeed;
     public float jumpPower;
     public bool AttackADone;
@@ -32,7 +36,8 @@ public class Player : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        HP = 5;
+        // HP = 5;
+        CmdSetHP(5);
         AttackADone = true;
         AttackBDone = true;
         Attacking = false;
@@ -153,7 +158,8 @@ public class Player : NetworkBehaviour
 
             if (HP > 5)
             {
-                HP = 5;
+                // HP = 5;
+                CmdSetHP(5);
             }
         }
     }
@@ -209,10 +215,11 @@ public class Player : NetworkBehaviour
     {
         if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Boss")
         {
-            HP -= 1; // ���� �浹�� ü�� -1;
+            // HP -= 1; // ���� �浹�� ü�� -1;
+            CmdDecHP();
             anim.SetTrigger("isHit"); // �ǰ� �ִϸ��̼� ���
 
-            if (HP == 0)
+            if (HP <= 0)
             {
                 anim.SetBool("isDead", true);
             }
@@ -279,6 +286,24 @@ public class Player : NetworkBehaviour
         inLadder = false;
     }
 
+    [Command(requiresAuthority = false)]
+    void CmdSetHP(int hp) {
+        HP = hp;
+    }
 
+    [Command(requiresAuthority = false)]
+    void CmdDecHP() {
+        HP--;
+    }
+
+    [Command(requiresAuthority = false)]
+    void CmdIncHP() {
+        HP++;
+    }
+
+    [Command(requiresAuthority = false)]
+    public void CmdAddItem(int item) {
+        Items.Add(item);
+    }
 
 }
