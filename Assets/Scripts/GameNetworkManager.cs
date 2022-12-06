@@ -17,7 +17,10 @@ public class GameNetworkManager : NetworkManager
         base.OnStartServer();
         NetworkServer.RegisterHandler<CreatePlayerMessage>(OnCreatePlayer);
         print("Server");
-        NetworkServer.Spawn(Instantiate(spawnPrefabs[0])); // Score 동기화 GameObject 스폰
+        if (GameObject.FindGameObjectWithTag("ScoreManager") == null) {
+            print("ScoreManager is not Found. create ScoreManager");
+            NetworkServer.Spawn(Instantiate(spawnPrefabs[0])); // Score 동기화 GameObject 스폰
+        }
     }
 
     public override void OnStartClient()
@@ -66,5 +69,34 @@ public class GameNetworkManager : NetworkManager
 
     public void SelectPlayer(int player) {
         PlayerCharacterType = player;
+    }
+
+    public void NextStage() {
+        string currentScene = networkSceneName;
+        string nextScene = "Stage1";
+        if (currentScene.Contains("Stage1")) {
+            nextScene = "Stage2";
+        } else if(currentScene.Contains("Stage2")) {
+            nextScene = "Stage3";
+        } else if(currentScene.Contains("Stage3")) {
+            nextScene = "Tilemap4";
+        } else if(currentScene.Contains("Tilemap4")) {
+            nextScene = "Stage5";
+        } else if(currentScene.Contains("Stage5")) {
+            print("All Stage Finished.");
+        }
+        ServerChangeScene("Assets/Scenes/" + nextScene + ".unity");
+    }
+
+    public override void OnClientSceneChanged()
+    {;
+        base.OnClientSceneChanged();
+        print("Client Scene Changed");
+    }
+
+    public override void OnServerChangeScene(string newSceneName)
+    {
+        base.OnServerChangeScene(newSceneName);
+        print("Server OnServerChangeScene");
     }
 }
