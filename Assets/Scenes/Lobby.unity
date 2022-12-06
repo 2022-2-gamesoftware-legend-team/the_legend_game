@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 715003857399663587, guid: a78812eb215a29943841cbf8a3de8f75, type: 3}
+      propertyPath: offlineScene
+      value: Assets/Scenes/Lobby.unity
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a78812eb215a29943841cbf8a3de8f75, type: 3}
 --- !u!1 &1093988672
@@ -264,6 +268,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1208564881 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 715003857399663587, guid: a78812eb215a29943841cbf8a3de8f75, type: 3}
+  m_PrefabInstance: {fileID: 699064495}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a354f4aec2d2c8848ad12bf1c8cc8ad8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1308491309
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -286,7 +301,7 @@ PrefabInstance:
     - target: {fileID: 345160451295100359, guid: 4c8b2056100e2de42ae230f2299cb734, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1782714721}
+      objectReference: {fileID: 1208564881}
     - target: {fileID: 345160451295100359, guid: 4c8b2056100e2de42ae230f2299cb734, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -318,7 +333,7 @@ PrefabInstance:
     - target: {fileID: 345160452098969632, guid: 4c8b2056100e2de42ae230f2299cb734, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1782714721}
+      objectReference: {fileID: 1208564881}
     - target: {fileID: 345160452098969632, guid: 4c8b2056100e2de42ae230f2299cb734, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -437,7 +452,7 @@ PrefabInstance:
       objectReference: {fileID: 1093988674}
     - target: {fileID: 345160452197876639, guid: 4c8b2056100e2de42ae230f2299cb734, type: 3}
       propertyPath: m_RenderMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 345160452988806540, guid: 4c8b2056100e2de42ae230f2299cb734, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -454,7 +469,7 @@ PrefabInstance:
     - target: {fileID: 345160452988806541, guid: 4c8b2056100e2de42ae230f2299cb734, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1782714721}
+      objectReference: {fileID: 1208564881}
     - target: {fileID: 345160452988806541, guid: 4c8b2056100e2de42ae230f2299cb734, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -559,5 +574,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
