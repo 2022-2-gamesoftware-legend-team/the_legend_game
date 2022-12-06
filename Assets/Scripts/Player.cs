@@ -160,13 +160,12 @@ public class Player : NetworkBehaviour
 
     public void FlipX(bool b)
     {
-        if (isServer)
-        {
-            SpriteRenderer.flipX = b;
-        }
-        else
-        {
+        SpriteRenderer.flipX = b;
+        if (isClient) {
             CmdFlipX(b);
+        }
+        if (isServer) {
+            RpcFlipX(b);
         }
     }
     private void FixedUpdate()
@@ -185,21 +184,27 @@ public class Player : NetworkBehaviour
     }
 
     [ClientRpc]
-    public void RpcServerSceneChanged() {
+    public void RpcFlipX(bool b){
+        SpriteRenderer.flipX = b;
+    }
+
+    public void ServerSceneChanged() {
         if (isLocalPlayer) {
             print("Scene Changed. Position Reset");
             Vector3 spawnPosition = GameObject.FindGameObjectWithTag("SpawnPoint").GetComponent<Transform>().position;
             GetComponent<Rigidbody2D>().MovePosition(new Vector2(spawnPosition.x, spawnPosition.y));
-            if (GetComponent<CameraMove>() == null) {
+            print(spawnPosition);
+            if (GetComponent<CameraMove>() != null) {
                 float[] cameraBoundary = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<GameNetworkManager>().GetCameraBoundary();
                 CameraMove cameraMove = gameObject.GetComponent<CameraMove>();
                 cameraMove.minCameraBoundary = new Vector2(cameraBoundary[0], cameraBoundary[1]);
                 cameraMove.maxCameraBoundary = new Vector2(cameraBoundary[2], cameraBoundary[3]);
+                print(cameraBoundary[0] + " " + cameraBoundary[1] + " " + cameraBoundary[2] + " " + cameraBoundary[3]);
             }
         }
     }
 
-    [ServerCallback]
+    // [ServerCallback]
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Boss")
