@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 606997553518433590}
   - component: {fileID: 6448374368472631}
   - component: {fileID: 6745951105907343967}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: TrapTile
   m_TagString: Trap
   m_Icon: {fileID: 0}
