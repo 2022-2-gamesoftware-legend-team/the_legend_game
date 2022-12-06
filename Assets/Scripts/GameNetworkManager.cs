@@ -88,10 +88,51 @@ public class GameNetworkManager : NetworkManager
         ServerChangeScene("Assets/Scenes/" + nextScene + ".unity");
     }
 
+    public float[] GetCameraBoundary() {
+        float[] boundary = new float[4]{0,0,0,0};
+        string currentScene = networkSceneName;
+        if (currentScene.Contains("Stage1"))  {
+            boundary[0] = -6;
+            boundary[1] = -6;
+            boundary[2] = 76;
+            boundary[3] = 1;
+        } else if (currentScene.Contains("Stage2")) {
+            boundary[0] = -10;
+            boundary[1] = -6;
+            boundary[2] = 43;
+            boundary[3] = 2;
+        } else if (currentScene.Contains("Stage3")) {
+            boundary[0] = -5.9f;
+            boundary[1] = -1;
+            boundary[2] = 79;
+            boundary[3] = 2.4f;
+        } else if (currentScene.Contains("Tilemap4")) {
+            boundary[0] = -4.3f;
+            boundary[1] = -0.3f;
+            boundary[2] = 73;
+            boundary[3] = 1.9f;
+        } else if (currentScene.Contains("Stage5")) {
+            boundary[0] = -0.5f;
+            boundary[1] = -10;
+            boundary[2] = 52;
+            boundary[3] = 3.4f;
+        }
+        return boundary;
+    }
+
     public override void OnClientSceneChanged()
-    {;
+    {
         base.OnClientSceneChanged();
         print("Client Scene Changed");
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject player in players)
+        {
+            NetworkIdentity playerIdentity = player.GetComponent<NetworkIdentity>();
+            if (playerIdentity.isLocalPlayer) {
+                player.GetComponent<Player>().RpcServerSceneChanged();
+            }
+        }
+
     }
 
     public override void OnServerChangeScene(string newSceneName)
