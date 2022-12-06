@@ -6,8 +6,8 @@ public class CameraMove : MonoBehaviour
 {
     GameObject camera;
     [SerializeField] float smoothing = 0.2f;
-    [SerializeField] Vector2 minCameraBoundary;
-    [SerializeField] Vector2 maxCameraBoundary;
+    [SerializeField] public Vector2 minCameraBoundary;
+    [SerializeField] public Vector2 maxCameraBoundary;
     // Start is called before the first frame update
     void Start()
     {
