@@ -7,7 +7,7 @@ public class bottom : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Player player = GetComponentInParent<Player>();
+
     }
 
     // Update is called once per frame

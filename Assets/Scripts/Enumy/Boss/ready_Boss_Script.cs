@@ -22,11 +22,19 @@ public class ready_Boss_Script : StateMachineBehaviour
         if(boss.skill2Delay<=0)
             animator.SetTrigger("Skill2");    
 
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
         if(boss.atkDelay<=0)
             animator.SetTrigger("Attack");
-        if(Vector2.Distance(boss.player.position, bossTransform.position)> 3f)
-            animator.SetBool("isFollow",true);
-        boss.DirectionBoss(boss.player.position.x, bossTransform.position.x);
+        foreach(GameObject player in players)
+        {
+            if(Vector2.Distance(player.transform.position, bossTransform.position)>3.5f){
+                animator.SetBool("isFollow",true);
+                boss.DirectionBoss(player.transform.position.x, bossTransform.position.x);
+                break;
+            }
+            
+        }   
 
         
     }

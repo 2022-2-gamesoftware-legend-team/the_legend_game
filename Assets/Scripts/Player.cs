@@ -115,18 +115,10 @@ public class Player : NetworkBehaviour
                     land = false;
                 }
             }
-
-            // DoubleJump delay
-            if (Jumping == true)
-            {
-                DoubleJumpDelay = Time.deltaTime;
-            }
-
-
             // DoubleJump
             if (DoubleJumpAbllity == true)
             {
-                if (Input.GetButtonDown("Jump") && Jumping == true && DoubleJumpDelay >= 0.05f)
+                if (Input.GetButtonDown("Jump") && Jumping == true && DoubleJumpDelay >= 0.01f)
                 {
                     Debug.Log("Double Jump");
                     anim.SetBool("isJumping", false); // previous jump motion exit
@@ -241,6 +233,12 @@ public class Player : NetworkBehaviour
             print("move spawn positio " + spawnPoint);
             sceneReloaded = false;
         }
+
+        // DoubleJump delay
+        if (Jumping == true)
+        {
+            DoubleJumpDelay = Time.deltaTime;
+        }
     }
 
     [Command]
@@ -295,6 +293,7 @@ public class Player : NetworkBehaviour
         {
             anim.SetBool("isJumping", false);
             Jumping = false;
+            DoubleJumpDelay = 0.0f;
         }
     }
 

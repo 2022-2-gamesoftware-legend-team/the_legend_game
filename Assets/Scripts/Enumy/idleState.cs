@@ -16,9 +16,15 @@ public class idleState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-       if(Vector2.Distance(enemyTransform.position, enemy.player.position)<=4f){
-         animator.SetBool("isFollow", true);
-       }
+      GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+      foreach(GameObject player in players)
+      {
+         if(Vector2.Distance(enemyTransform.position, player.transform.position)<=4f){
+            animator.SetBool("isFollow", true);
+            break;
+         }
+      }
+       
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
