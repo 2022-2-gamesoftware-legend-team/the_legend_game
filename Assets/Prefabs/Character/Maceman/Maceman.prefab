@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6601234438120206451}
   - component: {fileID: 8040353556917154809}
   - component: {fileID: 7340896420446980033}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 8721548468909588480}
   - component: {fileID: -1392806464442213099}
   - component: {fileID: 7215278934352330334}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Maceman
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -316,7 +316,7 @@ MonoBehaviour:
   ImmuneTimer: 0
   inLadder: 0
   Jumping: 0
-  DoubleJumpAbllity: 0
+  DoubleJumpAbllity: 1
   DoubleJumping: 0
   DoubleJumpDelay: 0
   land: 0
