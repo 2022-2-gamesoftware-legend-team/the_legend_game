@@ -144,13 +144,13 @@ public class Player : NetworkBehaviour
             {
                 if (SpriteRenderer.flipX == true)
                 {
-                    GameObject AttackACollider = Instantiate(AttackAflipFactroy);
-                    AttackACollider.transform.position = transform.position;
+                    GameObject AttackACollider = Instantiate(AttackAflipFactroy, transform);
+                    // AttackACollider.transform.position = transform.position;
                 }
                 else
                 {
-                    GameObject AttackACollider = Instantiate(AttackAFactroy);
-                    AttackACollider.transform.position = transform.position;
+                    GameObject AttackACollider = Instantiate(AttackAFactroy, transform);
+                    // AttackACollider.transform.position = transform.position;
                 }
 
                 AttackADone = true;
@@ -170,13 +170,13 @@ public class Player : NetworkBehaviour
             {
                 if (SpriteRenderer.flipX == true)
                 {
-                    GameObject AttackBCollider = Instantiate(AttackBflipFactory);
-                    AttackBCollider.transform.position = transform.position;
+                    GameObject AttackBCollider = Instantiate(AttackBflipFactory, transform);
+                    // AttackBCollider.transform.position = transform.position;
                 }
                 else
                 {
-                    GameObject AttackBCollider = Instantiate(AttackBFactory);
-                    AttackBCollider.transform.position = transform.position;
+                    GameObject AttackBCollider = Instantiate(AttackBFactory, transform);
+                    // AttackBCollider.transform.position = transform.position;
                 }
 
                 AttackBDone = true;
