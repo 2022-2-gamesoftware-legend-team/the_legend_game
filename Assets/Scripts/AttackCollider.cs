@@ -3,31 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-// ÇÃ·¹ÀÌ¾îÀÇ °ø°Ý¸ð¼ÇÀÌ 10%ÀÌ»óÀÏ ¶§ »ý¼º, 100%ÀÌ»óÀÌ¸é ½º½º·Î¸¦ Destroy
+// ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý¸ï¿½ï¿½ï¿½ï¿½ 10%ï¿½Ì»ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, 100%ï¿½Ì»ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Î¸ï¿½ Destroy
 public class AttackCollider : NetworkBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-
+        print("Attack Collider Created");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
-        {
-            Destroy(gameObject);
-        }
+        // if (GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+        // {
+        //     Destroy(gameObject);
+        // }
     }
 
+    void OnTriggerEnter2D(Collider2D collider) {
+        print(collider.gameObject.tag);
+        print(LayerMask.LayerToName(collider.gameObject.layer));
+        if (collider.gameObject.tag == "Enumy") {
+            collider.gameObject.GetComponent<Enumy>().Hit();
+        }
+        if (collider.gameObject.tag == "Boss") {
+            collider.gameObject.GetComponent<Boss>().Hit();
+        }
+        Destroy(gameObject);
+    }
 
-    // Àû ¶Ç´Â º¸½º¿Í Ãæµ¹½Ã HP -= 1, ÆÇÁ¤ »èÁ¦
+    // ï¿½ï¿½ ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½æµ¹ï¿½ï¿½ HP -= 1, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy" &&
            collision.gameObject.tag == "Boss")
         {
+            print(collision.gameObject.tag);
             // collision.gameObject.GetComponent<EnemyStatus>().HP -= 1;
             Destroy(gameObject);
         }
