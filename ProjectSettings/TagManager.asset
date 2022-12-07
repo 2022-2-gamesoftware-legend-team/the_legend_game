@@ -4,11 +4,22 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Enemy
+  - ScoreManager
+  - NetworkManager
   - Trap
+  - Item
+  - JumpItem
+  - Enumy
+  - Revival
   - Ladder
   - e1Attack
   - Enumy
   - Boss
+  - Boss
+  - ItemManager
+  - e1Attack
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX
