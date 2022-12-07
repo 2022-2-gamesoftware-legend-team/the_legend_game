@@ -54,7 +54,7 @@ public class ChestDrop : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("플레이어한테 맞았습니다!");
+            Debug.Log("상자 열기");
             Hit();
         }
     }
