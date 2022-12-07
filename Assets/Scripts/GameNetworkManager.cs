@@ -16,7 +16,7 @@ public class GameNetworkManager : NetworkManager
 
     int currentStage = 1;
 
-    bool serverStagesLoaded = false;
+    bool StageLoaded = false;
 
     readonly List<Scene> stages = new List<Scene>();
     public override void OnStartServer()
@@ -52,13 +52,14 @@ public class GameNetworkManager : NetworkManager
         if (sceneName.Contains("Online")) {
             StartCoroutine(ServerLoadStages());
         }
+        StageLoaded = true;
     }
 
     IEnumerator ServerLoadStages() {
         for (int stage = 1; stage<=5;stage++) {
             yield return SceneManager.LoadSceneAsync(stage, new LoadSceneParameters {loadSceneMode = LoadSceneMode.Additive, localPhysicsMode = LocalPhysicsMode.Physics2D});
         }
-        serverStagesLoaded = true;
+        // serverStagesLoaded = true;
     }
 
     void OnCreatePlayer(NetworkConnectionToClient conn, CreatePlayerMessage msg)
@@ -90,6 +91,10 @@ public class GameNetworkManager : NetworkManager
     }
 
     public void NextStage() {
+        if (!StageLoaded) {
+            return;
+        }
+        StageLoaded = false;
         string nextStageName = SceneUtility.GetScenePathByBuildIndex(currentStage + 1);
         currentStage++;
         ServerChangeScene(nextStageName);
