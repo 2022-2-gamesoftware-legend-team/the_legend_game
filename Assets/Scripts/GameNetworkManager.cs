@@ -79,8 +79,9 @@ public class GameNetworkManager : NetworkManager
             default:
                 break;
         }
-        GameObject playerObject = Instantiate(player, GetStartPosition());
-        playerObject.transform.SetParent(null);
+        GameObject playerObject = Instantiate(player);
+        playerObject.transform.position = GetStartPosition().position;
+        // playerObject.transform.SetParent(null);
         NetworkServer.AddPlayerForConnection(conn, playerObject);
     }
 
@@ -135,7 +136,9 @@ public class GameNetworkManager : NetworkManager
         {
             NetworkIdentity playerIdentity = player.GetComponent<NetworkIdentity>();
             if (playerIdentity.isLocalPlayer) {
-                player.GetComponent<Player>().ServerSceneChanged();
+                Transform startPosition = GetStartPosition();
+                player.transform.position = startPosition.position;
+                player.GetComponent<Player>().ServerSceneChanged(startPosition);
             }
         }
 

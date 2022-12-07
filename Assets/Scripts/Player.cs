@@ -33,6 +33,11 @@ public class Player : NetworkBehaviour
     public GameObject AttackBFactory;
     public GameObject AttackBflipFactory;
 
+    // Scene Change Flag
+    bool sceneReloaded = false;
+
+    Vector2 spawnPoint = Vector2.zero;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -181,6 +186,13 @@ public class Player : NetworkBehaviour
         {
             Ladder(k);
         }
+        if (isLocalPlayer && sceneReloaded) {
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            // GetComponent<Rigidbody2D>().MovePosition(spawnPoint);
+            transform.position = new Vector3(spawnPoint.x, spawnPoint.y, transform.position.z);
+            print("move spawn positio " + spawnPoint);
+            sceneReloaded = false;
+        }
     }
 
     [Command]
@@ -194,12 +206,13 @@ public class Player : NetworkBehaviour
         SpriteRenderer.flipX = b;
     }
 
-    public void ServerSceneChanged() {
+    public void ServerSceneChanged(Transform startPosition) {
         if (isLocalPlayer) {
             print("Scene Changed. Position Reset");
-            Vector3 spawnPosition = GameObject.FindGameObjectWithTag("SpawnPoint").GetComponent<Transform>().position;
-            GetComponent<Rigidbody2D>().MovePosition(new Vector2(spawnPosition.x, spawnPosition.y));
-            print(spawnPosition);
+            // Vector3 spawnPosition = GameObject.FindGameObjectWithTag("SpawnPoint").GetComponent<Transform>().position;
+            Vector3 spawnPosition = startPosition.position;
+            spawnPoint = new Vector2(spawnPosition.x, spawnPosition.y);
+            print(spawnPoint);
             if (GetComponent<CameraMove>() != null) {
                 float[] cameraBoundary = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<GameNetworkManager>().GetCameraBoundary();
                 CameraMove cameraMove = gameObject.GetComponent<CameraMove>();
@@ -207,6 +220,7 @@ public class Player : NetworkBehaviour
                 cameraMove.maxCameraBoundary = new Vector2(cameraBoundary[2], cameraBoundary[3]);
                 print(cameraBoundary[0] + " " + cameraBoundary[1] + " " + cameraBoundary[2] + " " + cameraBoundary[3]);
             }
+            sceneReloaded = true;
         }
     }
 
@@ -226,7 +240,7 @@ public class Player : NetworkBehaviour
         }
 
         // �ٴڰ� ���˽� isJumping = false
-        if (collision.gameObject.name == "Ground")
+        if (collision.gameObject.name == "Ground" || collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             anim.SetBool("isJumping", false);
         }
