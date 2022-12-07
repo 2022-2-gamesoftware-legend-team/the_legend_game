@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Trap
   - Ladder
+  - e1Attack
+  - Enumy
+  - Boss
   layers:
   - Default
   - TransparentFX

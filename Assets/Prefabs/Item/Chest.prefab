@@ -85,3 +85,24 @@ MonoBehaviour:
   itemPrefabHp: {fileID: 6672345964142910194, guid: 8d4723ae081c54bde98cb74a7cc3c86b, type: 3}
   itemPrefabRe: {fileID: 8296898873335573198, guid: 8b03f0c19773b4b65abab1f7f7013fff, type: 3}
   itemPrefabJump: {fileID: 610855092238147590, guid: 3bc925ad14d0e444b9420e59da5d016c, type: 3}
+--- !u!50 &1342682802939186662
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7221589039854584768}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

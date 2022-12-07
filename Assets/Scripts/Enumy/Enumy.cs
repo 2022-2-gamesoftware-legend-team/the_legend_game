@@ -37,6 +37,7 @@ public class Enumy : MonoBehaviour
         playercontrol = GetComponent<PlayerControl>();
         
     }
+
     private void Update()
     {
         
@@ -58,6 +59,15 @@ public class Enumy : MonoBehaviour
         this.DropItem();
         Destroy(gameObject);
     }    
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Debug.Log("플레이어한테 맞았습니다!");
+            Hit();
+        }
+    }
     
     public void DropItem()
     {
