@@ -44,7 +44,7 @@ public class ChestDrop : MonoBehaviour
         // this.animator.SetBool("isOpen", true);
         this.chestDie = true;
         this.RandomItem();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.5f);
         this.DropItem();
         Destroy(gameObject);
     }    
