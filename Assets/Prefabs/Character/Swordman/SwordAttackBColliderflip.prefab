@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6596595915511276681}
   - component: {fileID: 325310830878436005}
   - component: {fileID: 2422440444672489449}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: SwordAttackBColliderflip
   m_TagString: Untagged
   m_Icon: {fileID: 0}

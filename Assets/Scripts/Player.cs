@@ -19,14 +19,20 @@ public class Player : NetworkBehaviour
     public bool AttackADone;
     public bool AttackBDone;
     public bool Attacking;
-    public bool immune;
-    public float immuneTimer;
+    public bool Immune;
+    public float ImmuneTimer;
     public bool inLadder;
+    public bool Jumping;
+    public bool DoubleJumpAbllity;
+    public bool DoubleJumping;
+    public float DoubleJumpDelay;
+    public bool land;
 
     // player components
     public Animator anim;
     public Rigidbody2D rigid;
     public SpriteRenderer SpriteRenderer;
+    public CircleCollider2D bottom;
 
     // player attack colliders
     public GameObject AttackAFactroy;
@@ -47,10 +53,13 @@ public class Player : NetworkBehaviour
         AttackADone = true;
         AttackBDone = true;
         Attacking = false;
-        immune = false;
-        immuneTimer = 0.0f;
+        Immune = false;
+        ImmuneTimer = 0.0f;
         inLadder = false;
-
+        DoubleJumpAbllity = false;
+        DoubleJumping = false;
+        Jumping = false;
+        DoubleJumpDelay = 0.0f;
         // only Local Player can use Camera Move
         if (isLocalPlayer) {
             if (GetComponent<CameraMove>() == null) {
@@ -98,14 +107,37 @@ public class Player : NetworkBehaviour
             // Jump
             if (Input.GetButtonDown("Jump"))
             {
-                if (anim.GetBool("isJumping") == false)
+                if (land == true)
                 {
                     rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
                     anim.SetBool("isJumping", true);
+                    Jumping = true;
+                    land = false;
                 }
             }
 
+            // DoubleJump delay
+            if (Jumping == true)
+            {
+                DoubleJumpDelay = Time.deltaTime;
+            }
 
+
+            // DoubleJump
+            if (DoubleJumpAbllity == true)
+            {
+                if (Input.GetButtonDown("Jump") && Jumping == true && DoubleJumpDelay >= 0.05f)
+                {
+                    Debug.Log("Double Jump");
+                    anim.SetBool("isJumping", false); // previous jump motion exit
+                    anim.SetBool("isJumping", true); // new jump motion enter
+                    rigid.velocity = new Vector2(rigid.velocity.x, 0);
+                    rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+                    Jumping = false;
+                    DoubleJumpDelay = 0.0f;
+                }
+            }
+      
             // AttackA
             if (Input.GetButtonDown("Fire1") && AttackADone == true && Attacking == false)
             {
@@ -170,16 +202,16 @@ public class Player : NetworkBehaviour
             }
 
             // immune start
-            if (immune == true)
+            if (Immune == true)
             {
-                immuneTimer += Time.deltaTime;
+                ImmuneTimer += Time.deltaTime;
             }
 
             // immune exit
-            if (immuneTimer > 1.0f)
+            if (ImmuneTimer > 1.0f)
             {
-                immuneTimer = 0.0f;
-                immune = false;
+                ImmuneTimer = 0.0f;
+                CmdSetImmune(false);
                 SpriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
             }
         }
@@ -243,13 +275,13 @@ public class Player : NetworkBehaviour
     // [ServerCallback]
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Boss" && immune == false)
+        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Boss" && Immune == false)
         {
             // HP -= 1;
             CmdDecHP();
             anim.SetTrigger("isHit");
             SpriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
-            immune = true; // immune timer start
+            CmdSetImmune(true); // immune timer start
 
             if (HP <= 0)
             {
@@ -257,10 +289,12 @@ public class Player : NetworkBehaviour
             }
         }
 
+
         // �ٴڰ� ���˽� isJumping = false
         if (collision.gameObject.name == "Ground" || collision.gameObject.layer == LayerMask.NameToLayer("Ground") || collision.gameObject.tag == "Ground")
         {
             anim.SetBool("isJumping", false);
+            Jumping = false;
         }
     }
 
@@ -321,6 +355,12 @@ public class Player : NetworkBehaviour
     [Command(requiresAuthority = false)]
     void CmdSetHP(int hp) {
         HP = hp;
+    }
+
+    [Command(requiresAuthority = false)]
+    void CmdSetImmune (bool immune)
+    {
+        Immune = immune;
     }
 
     [Command(requiresAuthority = false)]

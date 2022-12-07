@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3778396688814982395}
   - component: {fileID: 7913889864356234233}
   - component: {fileID: 2656323383180252151}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: SpearAttackBColliderflip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
