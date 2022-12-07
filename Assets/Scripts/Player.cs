@@ -15,6 +15,7 @@ public class Player : NetworkBehaviour
 
     public readonly SyncSortedSet<int> Items = new SyncSortedSet<int>();
     public float maxSpeed;
+    public float socre;
     public float jumpPower;
     public bool AttackADone;
     public bool AttackBDone;
@@ -50,6 +51,7 @@ public class Player : NetworkBehaviour
     {
         // HP = 5;
         CmdSetHP(5);
+        socre = 0;
         AttackADone = true;
         AttackBDone = true;
         Attacking = false;
@@ -308,6 +310,34 @@ public class Player : NetworkBehaviour
         {
             inLadder = true;
         }
+
+        if(collision.gameObject.tag=="Item"){
+            collision.gameObject.SetActive(false);
+            if(HP<5)
+                HP ++;
+            else
+            {   
+                socre += 100;
+            }
+        }
+        else if(collision.gameObject.tag=="JumpItem"){
+            collision.gameObject.SetActive(false);
+            if(DoubleJumpAbllity!=false){
+                DoubleJumpAbllity = true;
+            }
+            else{
+                socre += 200;
+            }
+        }
+        else if(collision.gameObject.tag=="Revival"){
+            collision.gameObject.SetActive(false);
+            if(Immune == false ){
+                Immune = true;
+            }
+            else{
+                socre += 500;
+            }
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -376,5 +406,8 @@ public class Player : NetworkBehaviour
     public void CmdAddItem(int item) {
         Items.Add(item);
     }
+
+
+   
 
 }
