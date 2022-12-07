@@ -39,6 +39,25 @@ public class ChestDrop : MonoBehaviour
         this.DropItem();
         Destroy(gameObject);
     }    
+
+    public void Hit()
+   {
+    if(chestHp>0){
+        chestHp--;
+    }
+    if(chestHp<=0 && chestDie ==false)
+    {
+        StartCoroutine(Die()); 
+    }
+   }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Debug.Log("상자 열기");
+            Hit();
+        }
+    }
     void RandomItem()
     {
         

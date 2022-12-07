@@ -68,6 +68,14 @@ public class Boss : MonoBehaviour
         Destroy(gameObject);
     }    
     
+    // void OnCollisionEnter2D(Collision2D collision)
+    // {
+    //     if (collision.gameObject.tag == "Player")
+    //     {
+    //         Debug.Log("플레이어한테 맞았습니다!");
+    //         Hit();
+    //     }
+    // }
     
    public void DirectionBoss(float target, float baseobj)
    {
