@@ -258,7 +258,7 @@ public class Player : NetworkBehaviour
         }
 
         // �ٴڰ� ���˽� isJumping = false
-        if (collision.gameObject.name == "Ground" || collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        if (collision.gameObject.name == "Ground" || collision.gameObject.layer == LayerMask.NameToLayer("Ground") || collision.gameObject.tag == "Ground")
         {
             anim.SetBool("isJumping", false);
         }
