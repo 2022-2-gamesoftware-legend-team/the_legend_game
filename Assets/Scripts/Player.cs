@@ -46,12 +46,20 @@ public class Player : NetworkBehaviour
 
     Vector2 spawnPoint = Vector2.zero;
 
+    // ScoreManagement
+    GameObject ScoreManager;
+    SyncScore scoreSync;
+
     // Start is called before the first frame update
     void Start()
     {
+        ScoreManager = GameObject.FindGameObjectWithTag("ScoreManager");
+        scoreSync = ScoreManager.GetComponent<SyncScore>();
         // HP = 5;
         CmdSetHP(5);
         socre = 0;
+        scoreSync.ChangeScore(0);
+        
         AttackADone = true;
         AttackBDone = true;
         Attacking = false;
@@ -71,6 +79,7 @@ public class Player : NetworkBehaviour
                 cameraMove.maxCameraBoundary = new Vector2(cameraBoundary[2], cameraBoundary[3]);
             }
         }
+
         
         // prevent destroy
         DontDestroyOnLoad(gameObject);
@@ -318,6 +327,7 @@ public class Player : NetworkBehaviour
             else
             {   
                 socre += 100;
+                scoreSync.ChangeScore(scoreSync.Score + 100);
             }
         }
         else if(collision.gameObject.tag=="JumpItem"){
@@ -327,6 +337,7 @@ public class Player : NetworkBehaviour
             }
             else{
                 socre += 200;
+                scoreSync.ChangeScore(scoreSync.Score + 200);
             }
         }
         else if(collision.gameObject.tag=="Revival"){
@@ -336,6 +347,7 @@ public class Player : NetworkBehaviour
             }
             else{
                 socre += 500;
+                scoreSync.ChangeScore(scoreSync.Score + 500);
             }
         }
     }
