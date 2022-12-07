@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enumy : MonoBehaviour
 {
-    public Transform player;
+    // public Transform player;
     public bool flip = false;
     Animator animator;
     public float speed = 1.5f;
@@ -30,7 +30,7 @@ public class Enumy : MonoBehaviour
     void Awake()
     {
         animator = GetComponent<Animator>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        // player = GameObject.FindGameObjectWithTag("Player").transform;
         spriteRenderer = GetComponent<SpriteRenderer>();
         home = transform.position;
         rigid2D = GetComponent<Rigidbody2D>();

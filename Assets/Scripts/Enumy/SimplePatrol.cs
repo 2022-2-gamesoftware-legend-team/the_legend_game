@@ -22,13 +22,15 @@ public class SimplePatrol : MonoBehaviour
     }
 
     private void Update(){
-        if(Vector2.Distance(enemyTransform.position, enemy.player.position)>3.0f)
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach(GameObject player in players)
+        {
+            if(Vector2.Distance(enemyTransform.position, player.transform.position)>3.0f)
         {
             Vector3 direction = (paths[currentPath].position - transform.position).normalized;
         // 이동 방향 설정 (목표위치 - 내위치 ) 정규화
         transform.position += direction * moveSpeed * Time.deltaTime;
         // 오브젝트 이동
-
 
         // 목표 위치에 거의 도달했을 때
         if((paths[currentPath].position - transform.position).sqrMagnitude < 2f)
@@ -52,7 +54,10 @@ public class SimplePatrol : MonoBehaviour
         {
             Vector3 direction = (paths[currentPath].position - transform.position).normalized;
             transform.position += direction * 0 * Time.deltaTime;
+            break;
         }
+        }
+        
         
     }
 }

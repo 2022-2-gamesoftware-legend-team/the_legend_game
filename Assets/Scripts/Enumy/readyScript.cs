@@ -16,12 +16,21 @@ public class readyScript : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-      
+
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
         if(enemy.atkDelay<=0)
             animator.SetTrigger("Attack");
-        if(Vector2.Distance(enemy.player.position, enemyTransform.position)> 3.5f)
-            animator.SetBool("isFollow",true);
-        enemy.DirectionEnemy(enemy.player.position.x, enemyTransform.position.x);
+        foreach(GameObject player in players)
+        {
+            if(Vector2.Distance(player.transform.position, enemyTransform.position)>3.5f){
+                animator.SetBool("isFollow",true);
+                enemy.DirectionEnemy(player.transform.position.x, enemyTransform.position.x);
+                break;
+            }
+            
+        }   
+        
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

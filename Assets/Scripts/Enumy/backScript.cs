@@ -16,17 +16,26 @@ public class backScript : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if( Vector2.Distance(enemy.home, enemyTransform.position) <0.1f || Vector2.Distance(enemyTransform.position, enemy.player.position)<=5f)
+
+
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach(GameObject player in players)
         {
-            animator.SetBool("isBack", false);
-            
-        }
+            if( Vector2.Distance(enemy.home, enemyTransform.position) <0.1f || Vector2.Distance(enemyTransform.position, player.transform.position)<=5f)
+            {
+                animator.SetBool("isBack", false);
+                break;
+            }
     
-        else
-        {
-            enemy.DirectionEnemy(enemy.home.x, enemyTransform.position.x);
-            enemyTransform.position = Vector2.MoveTowards(enemyTransform.position, enemy.home, Time.deltaTime * enemy.speed);
+            else
+            {
+                enemy.DirectionEnemy(enemy.home.x, enemyTransform.position.x);
+                enemyTransform.position = Vector2.MoveTowards(enemyTransform.position, enemy.home, Time.deltaTime * enemy.speed);
+            }
+        
         }
+
+
         
 
         

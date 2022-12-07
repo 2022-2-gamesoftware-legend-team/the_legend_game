@@ -16,20 +16,25 @@ public class followScript : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(Vector2.Distance(enemy.player.position, enemyTransform.position)>5f)
-        {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach(GameObject player in players)
+      {
+         if(Vector2.Distance( player.transform.position, enemyTransform.position)>5f){
             animator.SetBool("isBack", true);
             animator.SetBool("isFollow", false);
-        }
-        else if(Vector2.Distance(enemy.player.position, enemyTransform.position)>1.7f)
-            enemyTransform.position = Vector2.MoveTowards(enemyTransform.position, enemy.player.position, Time.deltaTime* enemy.speed);
-        else
-        {
+            enemy.DirectionEnemy(player.transform.position.x, enemyTransform.position.x);
+            break;
+         }
+         else if(Vector2.Distance(player.transform.position, enemyTransform.position)>1.7f)
+             enemyTransform.position = Vector2.MoveTowards(enemyTransform.position, player.transform.position, Time.deltaTime* enemy.speed);
+         else
+         {
             animator.SetBool("isBack", false);
             animator.SetBool("isFollow", false);
-            // enemyTransform.position = 0.1f;
-        }
-        enemy.DirectionEnemy(enemy.player.position.x, enemyTransform.position.x);
+         }
+        enemy.DirectionEnemy(player.transform.position.x, enemyTransform.position.x);
+      }
+        
 
         
     }
