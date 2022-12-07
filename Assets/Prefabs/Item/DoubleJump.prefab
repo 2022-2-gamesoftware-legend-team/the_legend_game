@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 610855092238147588}
   - component: {fileID: 610855092238147591}
   - component: {fileID: 5573587522971680193}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DoubleJump
   m_TagString: JumpItem
   m_Icon: {fileID: 0}

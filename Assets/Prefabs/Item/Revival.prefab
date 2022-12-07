@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8296898873335573232}
   - component: {fileID: 8296898873335573233}
   - component: {fileID: 7805004211546537146}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Revival
   m_TagString: Revival
   m_Icon: {fileID: 0}
