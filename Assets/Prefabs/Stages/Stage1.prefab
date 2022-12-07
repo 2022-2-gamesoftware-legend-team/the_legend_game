@@ -856,6 +856,10 @@ PrefabInstance:
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[2].Array.data[23].Y
       value: -88333428
       objectReference: {fileID: 0}
+    - target: {fileID: 3480161444588765488, guid: 138e2108b13a3134aae25f4136832638, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3727795314765861195, guid: 138e2108b13a3134aae25f4136832638, type: 3}
       propertyPath: m_ChunkCullingBounds.x
       value: 0.03333336
