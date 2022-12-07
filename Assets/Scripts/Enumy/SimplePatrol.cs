@@ -1,58 +1,65 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class SimplePatrol : MonoBehaviour
+public class SimplePatrol : NetworkBehaviour
 {
     [SerializeField]
     Transform enemyTransform;
     Enumy enemy;
-    public Transform[] paths; //순찰 경로
     private int currentPath = 0; //현재 목표지점 인덱스
     private float moveSpeed = 2f; //이동 속도
+
+    public Vector2 StartPosition;
+
+    public int MoveRange;
+
+    [SyncVar]
+    bool isMoveBackward = false;
+
+    [SyncVar]
+    bool isFollowPlayer = false;
     private SpriteRenderer spriteRenderer;
     private bool flag = true;
-    public Transform player;
      private void Awake(){
         
         spriteRenderer = GetComponent < SpriteRenderer >();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        enemy = GetComponent<Enumy>();
-        enemyTransform = GetComponent<Transform>();
+        // enemy = GetComponent<Enumy>();
+        // enemyTransform = GetComponent<Transform>();
     }
 
     private void Update(){
-        if(Vector2.Distance(enemyTransform.position, enemy.player.position)>3.0f)
-        {
-            Vector3 direction = (paths[currentPath].position - transform.position).normalized;
-        // 이동 방향 설정 (목표위치 - 내위치 ) 정규화
-        transform.position += direction * moveSpeed * Time.deltaTime;
-        // 오브젝트 이동
 
+        if (isServer){
 
-        // 목표 위치에 거의 도달했을 때
-        if((paths[currentPath].position - transform.position).sqrMagnitude < 2f)
-        {
-            // 목표 위치 변경 (순찰 경로 순환)
-            if(currentPath < paths.Length-1) currentPath++;
-            else {
-                currentPath = 0;
+            // 범위 벗어남 확인
+            if (transform.position.x < (StartPosition.x - MoveRange)) {
+                isMoveBackward = false;
             }
-            if(flag == true){
-                    flag = false;
-                    spriteRenderer.flipX = (flag);
-                }
-                else{
-                    flag = true;
-                    spriteRenderer.flipX = (flag);
+            if (transform.position.x > (StartPosition.x + MoveRange)) {
+                isMoveBackward = true;
+            }
+
+            // Player 탐지
+            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+            foreach (GameObject player in players) {
+                if (Vector2.Distance(transform.position, player.transform.position) < 3.0f) {
+                    // follow
+                    Vector3 direction = (player.transform.position - transform.position).normalized;
+                    isMoveBackward = direction.x < 0;
+                    transform.position += direction * moveSpeed * Time.deltaTime;
+                    isFollowPlayer = true;
+                    break;
                 }
             }
+
+            if (!isFollowPlayer) {
+                Vector3 direction = (isMoveBackward ? Vector3.left : Vector3.right);
+                transform.position += direction * moveSpeed * Time.deltaTime;
+            }
         }
-        else
-        {
-            Vector3 direction = (paths[currentPath].position - transform.position).normalized;
-            transform.position += direction * 0 * Time.deltaTime;
-        }
-        
+        // Sprite Flip
+        spriteRenderer.flipX = isMoveBackward;
     }
 }
