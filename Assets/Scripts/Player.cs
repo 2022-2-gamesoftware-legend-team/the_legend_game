@@ -20,6 +20,7 @@ public class Player : NetworkBehaviour
     public bool AttackBDone;
     public bool Attacking;
     public bool immune;
+    public float immuneTimer;
     public bool inLadder;
 
     // player components
@@ -47,6 +48,7 @@ public class Player : NetworkBehaviour
         AttackBDone = true;
         Attacking = false;
         immune = false;
+        immuneTimer = 0.0f;
         inLadder = false;
 
         // only Local Player can use Camera Move
@@ -166,8 +168,22 @@ public class Player : NetworkBehaviour
                 // HP = 5;
                 CmdSetHP(5);
             }
+
+            // immune start
+            if (immune == true)
+            {
+                immuneTimer += Time.deltaTime;
+            }
+
+            // immune exit
+            if (immuneTimer > 1.0f)
+            {
+                immuneTimer = 0.0f;
+                immune = false;
+                SpriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+            }
         }
-    }
+    } 
 
     public void FlipX(bool b)
     {
@@ -227,11 +243,13 @@ public class Player : NetworkBehaviour
     // [ServerCallback]
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Boss")
+        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Boss" && immune == false)
         {
-            // HP -= 1; // ���� �浹�� ü�� -1;
+            // HP -= 1;
             CmdDecHP();
-            anim.SetTrigger("isHit"); // �ǰ� �ִϸ��̼� ���
+            anim.SetTrigger("isHit");
+            SpriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+            immune = true; // immune timer start
 
             if (HP <= 0)
             {
