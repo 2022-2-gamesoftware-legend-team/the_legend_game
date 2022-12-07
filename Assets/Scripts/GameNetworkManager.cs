@@ -48,18 +48,8 @@ public class GameNetworkManager : NetworkManager
     public override void OnServerSceneChanged(string sceneName)
     {
         base.OnServerSceneChanged(sceneName);
-        print(sceneName);
-        if (sceneName.Contains("Online")) {
-            StartCoroutine(ServerLoadStages());
-        }
-        StageLoaded = true;
-    }
 
-    IEnumerator ServerLoadStages() {
-        for (int stage = 1; stage<=5;stage++) {
-            yield return SceneManager.LoadSceneAsync(stage, new LoadSceneParameters {loadSceneMode = LoadSceneMode.Additive, localPhysicsMode = LocalPhysicsMode.Physics2D});
-        }
-        // serverStagesLoaded = true;
+        StageLoaded = true;
     }
 
     void OnCreatePlayer(NetworkConnectionToClient conn, CreatePlayerMessage msg)
