@@ -316,7 +316,7 @@ MonoBehaviour:
   ImmuneTimer: 0
   inLadder: 0
   Jumping: 0
-  DoubleJumpAbllity: 0
+  DoubleJumpAbllity: 1
   DoubleJumping: 0
   DoubleJumpDelay: 0
   land: 0
