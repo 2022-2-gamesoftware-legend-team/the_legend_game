@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2346373333957725413}
   - component: {fileID: 1651383074707051222}
   - component: {fileID: 1747276747504014289}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bottom
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -308,6 +308,7 @@ MonoBehaviour:
   playerName: 
   HP: 0
   maxSpeed: 3
+  score: 0
   jumpPower: 5
   AttackADone: 0
   AttackBDone: 0
@@ -320,6 +321,7 @@ MonoBehaviour:
   DoubleJumping: 0
   DoubleJumpDelay: 0
   land: 0
+  resurrectAbillity: 0
   anim: {fileID: 5880483030116523250}
   rigid: {fileID: 7506791946883308514}
   SpriteRenderer: {fileID: 4653657947388796586}

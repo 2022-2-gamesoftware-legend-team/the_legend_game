@@ -58,6 +58,7 @@ public class Enumy : MonoBehaviour
         this.RandomItem();
         yield return new WaitForSeconds(0.5f);
         this.DropItem();
+        Destroy(gameObject);
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         foreach(GameObject player in players)
         {
@@ -66,7 +67,7 @@ public class Enumy : MonoBehaviour
             scoreSync.ChangeScore(scoreSync.Score + 150);
             
         }
-        Destroy(gameObject);
+        
     }    
 
     // void OnCollisionEnter2D(Collision2D collision)

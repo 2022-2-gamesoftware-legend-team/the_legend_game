@@ -42,6 +42,7 @@ public class ChestDrop : MonoBehaviour
         this.RandomItem();
         yield return new WaitForSeconds(1.5f);
         this.DropItem();
+        Destroy(gameObject);
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         foreach(GameObject player in players)
         {
@@ -50,7 +51,7 @@ public class ChestDrop : MonoBehaviour
             scoreSync.ChangeScore(scoreSync.Score + 100);
             
         }
-        Destroy(gameObject);
+        
     }    
 
     public void Hit()

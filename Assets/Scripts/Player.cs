@@ -300,7 +300,7 @@ public class Player : NetworkBehaviour
     // [ServerCallback]
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+
 
 
         // �ٴڰ� ���˽� isJumping = false
@@ -350,7 +350,7 @@ public class Player : NetworkBehaviour
             if (HP < 5)
                 HP++;
             else
-            {   
+            {
                 score += 100;
                 scoreSync.ChangeScore(scoreSync.Score + 100);
             }
@@ -358,11 +358,12 @@ public class Player : NetworkBehaviour
         else if (collision.gameObject.tag == "JumpItem")
         {
             collision.gameObject.SetActive(false);
-            if (DoubleJumpAbllity != false)
+            if (DoubleJumpAbllity == false)
             {
                 DoubleJumpAbllity = true;
             }
-            else{
+            else
+            {
                 score += 200;
                 scoreSync.ChangeScore(scoreSync.Score + 200);
             }
@@ -370,11 +371,12 @@ public class Player : NetworkBehaviour
         else if (collision.gameObject.tag == "Revival")
         {
             collision.gameObject.SetActive(false);
-            if (Immune == false)
+            if (resurrectAbillity == false)
             {
-                Immune = true;
+                resurrectAbillity = true;
             }
-            else{
+            else
+            {
                 score += 500;
                 scoreSync.ChangeScore(scoreSync.Score + 500);
             }
@@ -401,6 +403,11 @@ public class Player : NetworkBehaviour
             rigid.velocity = new Vector2(0, 0);
             rigid.gravityScale = 0;
             this.gameObject.layer = 4;
+            Transform[] cht = gameObject.GetComponentsInChildren<Transform>();
+            foreach (Transform childTransform in cht)
+            {
+                childTransform.gameObject.layer = 4;
+            }
             if (k > 0)
             {
                 Debug.Log("k up");
@@ -419,6 +426,11 @@ public class Player : NetworkBehaviour
         Debug.Log("ladder out");
         this.rigid.gravityScale = 1;
         this.gameObject.layer = 8;
+        Transform[] cht = gameObject.GetComponentsInChildren<Transform>();
+        foreach (Transform childTransform in cht)
+        {
+            childTransform.gameObject.layer = 8;
+        }
         inLadder = false;
     }
 
