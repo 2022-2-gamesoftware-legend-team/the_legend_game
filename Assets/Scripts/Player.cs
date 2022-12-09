@@ -88,6 +88,9 @@ public class Player : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (anim.GetBool("isDead")) {
+            return;
+        }
         if (isLocalPlayer)
         {
             // Walk
