@@ -60,7 +60,7 @@ public class Player : NetworkBehaviour
         CmdSetHP(5);
         socre = 0;
         scoreSync.ChangeScore(0);
-        
+
         AttackADone = true;
         AttackBDone = true;
         Attacking = false;
@@ -74,8 +74,10 @@ public class Player : NetworkBehaviour
         resurrectAbillity = false;
 
         // only Local Player can use Camera Move
-        if (isLocalPlayer) {
-            if (GetComponent<CameraMove>() == null) {
+        if (isLocalPlayer)
+        {
+            if (GetComponent<CameraMove>() == null)
+            {
                 float[] cameraBoundary = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<GameNetworkManager>().GetCameraBoundary();
                 CameraMove cameraMove = gameObject.AddComponent<CameraMove>();
                 cameraMove.minCameraBoundary = new Vector2(cameraBoundary[0], cameraBoundary[1]);
@@ -83,7 +85,6 @@ public class Player : NetworkBehaviour
             }
         }
 
-        
         // prevent destroy
         DontDestroyOnLoad(gameObject);
     }
@@ -91,7 +92,8 @@ public class Player : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (anim.GetBool("isDead")) {
+        if (anim.GetBool("isDead"))
+        {
             return;
         }
         if (isLocalPlayer)
@@ -146,7 +148,7 @@ public class Player : NetworkBehaviour
                     DoubleJumpDelay = 0.0f;
                 }
             }
-      
+
             // AttackA
             if (Input.GetButtonDown("Fire1") && AttackADone == true && Attacking == false)
             {
@@ -220,15 +222,17 @@ public class Player : NetworkBehaviour
                 SpriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
             }
         }
-    } 
+    }
 
     public void FlipX(bool b)
     {
         SpriteRenderer.flipX = b;
-        if (isClient) {
+        if (isClient)
+        {
             CmdFlipX(b);
         }
-        if (isServer) {
+        if (isServer)
+        {
             RpcFlipX(b);
         }
     }
@@ -239,7 +243,8 @@ public class Player : NetworkBehaviour
         {
             Ladder(k);
         }
-        if (isLocalPlayer && sceneReloaded) {
+        if (isLocalPlayer && sceneReloaded)
+        {
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             // GetComponent<Rigidbody2D>().MovePosition(spawnPoint);
             transform.position = new Vector3(spawnPoint.x, spawnPoint.y, transform.position.z);
@@ -266,18 +271,22 @@ public class Player : NetworkBehaviour
     }
 
     [ClientRpc]
-    public void RpcFlipX(bool b){
+    public void RpcFlipX(bool b)
+    {
         SpriteRenderer.flipX = b;
     }
 
-    public void ServerSceneChanged(Transform startPosition) {
-        if (isLocalPlayer) {
+    public void ServerSceneChanged(Transform startPosition)
+    {
+        if (isLocalPlayer)
+        {
             print("Scene Changed. Position Reset");
             // Vector3 spawnPosition = GameObject.FindGameObjectWithTag("SpawnPoint").GetComponent<Transform>().position;
             Vector3 spawnPosition = startPosition.position;
             spawnPoint = new Vector2(spawnPosition.x, spawnPosition.y);
             print(spawnPoint);
-            if (GetComponent<CameraMove>() != null) {
+            if (GetComponent<CameraMove>() != null)
+            {
                 float[] cameraBoundary = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<GameNetworkManager>().GetCameraBoundary();
                 CameraMove cameraMove = gameObject.GetComponent<CameraMove>();
                 cameraMove.minCameraBoundary = new Vector2(cameraBoundary[0], cameraBoundary[1]);
@@ -332,32 +341,39 @@ public class Player : NetworkBehaviour
             inLadder = true;
         }
 
-        if(collision.gameObject.tag=="Item"){
+        if (collision.gameObject.tag == "Item")
+        {
             collision.gameObject.SetActive(false);
-            if(HP<5)
-                HP ++;
+            if (HP < 5)
+                HP++;
             else
-            {   
+            {
                 socre += 100;
                 scoreSync.ChangeScore(scoreSync.Score + 100);
             }
         }
-        else if(collision.gameObject.tag=="JumpItem"){
+        else if (collision.gameObject.tag == "JumpItem")
+        {
             collision.gameObject.SetActive(false);
-            if(DoubleJumpAbllity==false){
+            if (DoubleJumpAbllity != false)
+            {
                 DoubleJumpAbllity = true;
             }
-            else{
+            else
+            {
                 socre += 200;
                 scoreSync.ChangeScore(scoreSync.Score + 200);
             }
         }
-        else if(collision.gameObject.tag=="Revival"){
+        else if (collision.gameObject.tag == "Revival")
+        {
             collision.gameObject.SetActive(false);
-            if(resurrectAbillity == false ){
-                resurrectAbillity = true;
+            if (Immune == false)
+            {
+                Immune = true;
             }
-            else{
+            else
+            {
                 socre += 500;
                 scoreSync.ChangeScore(scoreSync.Score + 500);
             }
@@ -383,7 +399,7 @@ public class Player : NetworkBehaviour
         {
             rigid.velocity = new Vector2(0, 0);
             rigid.gravityScale = 0;
-            this.gameObject.layer = 4;
+            GetComponentInChildren.gameObject.layer = 4;
             if (k > 0)
             {
                 Debug.Log("k up");
@@ -401,37 +417,41 @@ public class Player : NetworkBehaviour
     {
         Debug.Log("ladder out");
         this.rigid.gravityScale = 1;
-        this.gameObject.layer = 8;
+        GetComponentInChildren.gameObject.layer = 8;
         inLadder = false;
     }
 
     [Command(requiresAuthority = false)]
-    void CmdSetHP(int hp) {
+    void CmdSetHP(int hp)
+    {
         HP = hp;
     }
 
     [Command(requiresAuthority = false)]
-    void CmdSetImmune (bool immune)
+    void CmdSetImmune(bool immune)
     {
         Immune = immune;
     }
 
     [Command(requiresAuthority = false)]
-    void CmdDecHP() {
+    void CmdDecHP()
+    {
         HP--;
     }
 
     [Command(requiresAuthority = false)]
-    void CmdIncHP() {
+    void CmdIncHP()
+    {
         HP++;
     }
 
     [Command(requiresAuthority = false)]
-    public void CmdAddItem(int item) {
+    public void CmdAddItem(int item)
+    {
         Items.Add(item);
     }
 
 
-   
+
 
 }
