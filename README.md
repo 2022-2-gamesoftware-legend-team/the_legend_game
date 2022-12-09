@@ -35,7 +35,19 @@ https://github.com/2022-2-gamesoftware-legend-team/the_legend_game
 
 ## 사용 Asset
 
-* 최종 제출물 "공유사항" 참고
+* 플레이어 : 
+   * https://assetstore.unity.com/packages/2d/characters/hero-nad-opponents-animation-140776 Hero and Opponents Animation
+* 적 :
+   * https://assetstore.unity.com/packages/2d/characters/medieval-warrior-pack-159577 Medieval Warrior Pack (Luiz Melo)
+   * https://assetstore.unity.com/packages/2d/characters/bandits-pixel-art-104130 Bandits (Sven Thole)
+   * https://assetstore.unity.com/packages/2d/characters/medieval-warrior-pack-2-174788 Medieval Warrior Pack 2
+   * https://assetstore.unity.com/packages/2d/characters/medieval-king-pack-2-174863 Medieval King Pack 2
+* 맵 : 
+   * 2D Platfrom Tile Set (동굴)
+   * 2D Jungle Side    (정글)
+   * Pixel Lost Game Scene (마을)
+   * Pixel Art Platformer (마을 -> 성)
+   * Platformer Set (성)
 
 ## Coding Guidlines(권장 가이드라인)
 
