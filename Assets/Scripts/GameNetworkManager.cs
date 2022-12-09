@@ -146,4 +146,11 @@ public class GameNetworkManager : NetworkManager
         
     }
 
+    public override void OnClientDisconnect()
+    {
+        base.OnClientDisconnect();
+        GameObject normalUI = GameObject.FindGameObjectWithTag("UI");
+        Destroy(normalUI);
+    }
+
 }
