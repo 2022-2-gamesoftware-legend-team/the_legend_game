@@ -196,10 +196,6 @@ public class Player : NetworkBehaviour
             }
 
             // immune start
-            if (Immune == true)
-            {
-                ImmuneTimer += Time.deltaTime;
-            }
 
             // immune exit
             if (ImmuneTimer > 1.0f)
@@ -240,6 +236,11 @@ public class Player : NetworkBehaviour
         if (Jumping == true)
         {
             DoubleJumpDelay = Time.deltaTime;
+        }
+
+        if (Immune == true)
+        {
+            ImmuneTimer += Time.deltaTime;
         }
     }
 
