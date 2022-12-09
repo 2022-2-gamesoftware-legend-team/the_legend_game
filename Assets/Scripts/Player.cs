@@ -400,7 +400,7 @@ public class Player : NetworkBehaviour
         {
             rigid.velocity = new Vector2(0, 0);
             rigid.gravityScale = 0;
-            GetComponentInChildren.gameObject.layer = 4;
+            this.gameObject.layer = 4;
             if (k > 0)
             {
                 Debug.Log("k up");
@@ -418,7 +418,7 @@ public class Player : NetworkBehaviour
     {
         Debug.Log("ladder out");
         this.rigid.gravityScale = 1;
-        GetComponentInChildren.gameObject.layer = 8;
+        this.gameObject.layer = 8;
         inLadder = false;
     }
 
