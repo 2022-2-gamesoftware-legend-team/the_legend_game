@@ -300,6 +300,20 @@ public class Player : NetworkBehaviour
     // [ServerCallback]
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        
+
+
+        // �ٴڰ� ���˽� isJumping = false
+        if (collision.gameObject.name == "Ground" || collision.gameObject.layer == LayerMask.NameToLayer("Ground") || collision.gameObject.tag == "Ground")
+        {
+            anim.SetBool("isJumping", false);
+            Jumping = false;
+            DoubleJumpDelay = 0.0f;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
         if (collision.gameObject.tag == "Attack" && Immune == false)
         {
             Debug.Log("HIT");
@@ -320,18 +334,6 @@ public class Player : NetworkBehaviour
             }
         }
 
-
-        // �ٴڰ� ���˽� isJumping = false
-        if (collision.gameObject.name == "Ground" || collision.gameObject.layer == LayerMask.NameToLayer("Ground") || collision.gameObject.tag == "Ground")
-        {
-            anim.SetBool("isJumping", false);
-            Jumping = false;
-            DoubleJumpDelay = 0.0f;
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
         if (collision.gameObject.tag == "Finish")
         {
             gameManager.NextStage();
