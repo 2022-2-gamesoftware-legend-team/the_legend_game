@@ -28,6 +28,10 @@ https://github.com/2022-2-gamesoftware-legend-team/the_legend_game
 ![Trello2](https://user-images.githubusercontent.com/6850405/206715120-d5da121c-40ef-4b7a-95d7-ae044c2d53c6.png)
 * Google Docs
 
+## 사용 Asset
+
+* 최종 제출물 "공유사항" 참고
+
 ## Coding Guidlines(권장 가이드라인)
 
 ### C# Coding Guideline
