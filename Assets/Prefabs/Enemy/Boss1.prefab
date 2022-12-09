@@ -230,9 +230,10 @@ MonoBehaviour:
   skillDelay: 0
   skill2Cooltime: 5
   skill2Delay: 0
-  boss: {fileID: 0}
+  boss: {fileID: 1755214644681904958, guid: 582c194fc1804af4c8bde53cb33930ba, type: 3}
   bossHp: 10
   bossDie: 0
+  finishPortal: {fileID: 1755214644681904958, guid: f39426a001c71d84999be2ee63c7d322, type: 3}
   boxpos: {fileID: 7951253865102995084}
   boxSize: {x: 0, y: 0}
 --- !u!114 &18913069429712244
