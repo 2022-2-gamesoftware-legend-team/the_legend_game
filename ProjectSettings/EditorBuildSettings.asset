@@ -23,9 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stage5.unity
     guid: c53d006fe14664f479e00a9a5c11f590
-  - enabled: 1
-    path: Assets/Scenes/Online.unity
-    guid: 60aeed78a7d7c624a8abcba3e466e352
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Mirror/Examples/AdditiveLevels/Scenes/Offline.unity
     guid: 9959d9d8e637be64dab77006a85135c1

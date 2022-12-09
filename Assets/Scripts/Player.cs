@@ -333,7 +333,7 @@ public class Player : NetworkBehaviour
         }
         else if(collision.gameObject.tag=="JumpItem"){
             collision.gameObject.SetActive(false);
-            if(DoubleJumpAbllity!=false){
+            if(DoubleJumpAbllity==false){
                 DoubleJumpAbllity = true;
             }
             else{
