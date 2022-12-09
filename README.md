@@ -23,10 +23,15 @@ https://github.com/2022-2-gamesoftware-legend-team/the_legend_game
 ## 협업 활동
 
 * Github
+![Screenshot_20221209_104645](https://user-images.githubusercontent.com/6850405/206716507-a48d1b3a-6c3b-4a1c-b6e0-b54d1fb80d31.png)
+
 * Trello
 ![Trello1](https://user-images.githubusercontent.com/6850405/206715095-5779bd14-3cb3-4ba8-833e-b7347e7e0cfb.png)
 ![Trello2](https://user-images.githubusercontent.com/6850405/206715120-d5da121c-40ef-4b7a-95d7-ae044c2d53c6.png)
+
 * Google Docs
+![Screenshot_20221209_104841](https://user-images.githubusercontent.com/6850405/206716713-e35aa866-2eca-435e-9ac1-ed22163c6852.png)
+
 
 ## 사용 Asset
 
