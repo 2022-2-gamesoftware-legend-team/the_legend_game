@@ -47,7 +47,7 @@ public class Enumy : MonoBehaviour
         {
             StartCoroutine(Die()); 
         }
-        a_RandNum = Random.Range(0, 2); 
+        a_RandNum = Random.Range(0, 3); 
         b_RandNum = Random.Range(0, 100); 
     }
     IEnumerator Die() {
@@ -219,7 +219,7 @@ public class Enumy : MonoBehaviour
             }
             else if(a_RandNum ==2) // 부활 점프
             {
-                category = "revivalItem";
+                category = "RevivalItem";
             }
             else
                 category=  "NoItem";

@@ -350,8 +350,8 @@ public class Player : NetworkBehaviour
         }
         else if(collision.gameObject.tag=="Revival"){
             collision.gameObject.SetActive(false);
-            if(Immune == false ){
-                Immune = true;
+            if(resurrectAbillity == false ){
+                resurrectAbillity = true;
             }
             else{
                 socre += 500;

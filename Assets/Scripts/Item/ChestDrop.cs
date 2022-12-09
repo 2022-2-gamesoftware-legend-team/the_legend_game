@@ -79,7 +79,7 @@ public class ChestDrop : MonoBehaviour
             }
             else if(a_RandNum ==2) // 부활 점프
             {
-                category = "revivalItem";
+                category = "RevivalItem";
             }
             else
                 category=  "NoItem";
