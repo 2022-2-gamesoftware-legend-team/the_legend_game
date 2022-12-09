@@ -47,11 +47,10 @@ public class ChestDrop : MonoBehaviour
         foreach(GameObject player in players)
         {
             Player p = player.GetComponent<Player>();
-            p.score += 100;
-            scoreSync.ChangeScore(scoreSync.Score + 100);
-            
+            p.score += 200;
+            scoreSync.ChangeScore(scoreSync.Score + 200);
+            break;
         }
-        
     }    
 
     public void Hit()

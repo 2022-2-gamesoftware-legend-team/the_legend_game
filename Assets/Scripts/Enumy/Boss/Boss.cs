@@ -73,6 +73,7 @@ public class Boss : NetworkBehaviour
         // Instantiate(finishPortal, transform.position, transform.rotation);
         CmdCreatePortal();
         yield return new WaitForSeconds(0.5f);
+        Destroy(gameObject);
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         foreach(GameObject player in players)
         {
@@ -81,7 +82,7 @@ public class Boss : NetworkBehaviour
             scoreSync.ChangeScore(scoreSync.Score + 1500);
             
         }
-        Destroy(gameObject);
+        
     }
 
     [Command(requiresAuthority = false)]

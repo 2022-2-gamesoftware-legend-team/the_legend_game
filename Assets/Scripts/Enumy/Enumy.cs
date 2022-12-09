@@ -65,6 +65,7 @@ public class Enumy : MonoBehaviour
             Player p = player.GetComponent<Player>();
             p.score += 150;
             scoreSync.ChangeScore(scoreSync.Score + 150);
+            break;
             
         }
         
