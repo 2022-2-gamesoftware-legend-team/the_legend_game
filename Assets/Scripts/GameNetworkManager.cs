@@ -84,6 +84,10 @@ public class GameNetworkManager : NetworkManager
         if (!StageLoaded) {
             return;
         }
+        if (currentStage == 5) {
+            StopServer();
+            return;
+        }
         StageLoaded = false;
         string nextStageName = SceneUtility.GetScenePathByBuildIndex(currentStage + 1);
         currentStage++;
