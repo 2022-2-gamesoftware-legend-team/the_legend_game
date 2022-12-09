@@ -100,7 +100,7 @@ public class GameNetworkManager : NetworkManager
             boundary[3] = 1;
         } else if (currentScene.Contains("Stage2")) {
             boundary[0] = -10;
-            boundary[1] = -6;
+            boundary[1] = -4;
             boundary[2] = 43;
             boundary[3] = 2;
         } else if (currentScene.Contains("Stage3")) {
@@ -112,7 +112,7 @@ public class GameNetworkManager : NetworkManager
             boundary[0] = -4.3f;
             boundary[1] = -0.3f;
             boundary[2] = 73;
-            boundary[3] = 1.9f;
+            boundary[3] = 2.5f;
         } else if (currentScene.Contains("Stage5")) {
             boundary[0] = -0.5f;
             boundary[1] = -10;
