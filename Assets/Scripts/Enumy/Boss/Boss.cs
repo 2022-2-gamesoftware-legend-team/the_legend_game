@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class Boss : MonoBehaviour
+public class Boss : NetworkBehaviour
 {
     public Transform player;
     public bool flip = false;
@@ -26,6 +27,8 @@ public class Boss : MonoBehaviour
     public bool bossDie = false;
     public System.Action onDie;
        ItemDrop itemDrop;
+
+    public GameObject finishPortal;
     // Start is called before the first frame update
     
     
@@ -64,9 +67,16 @@ public class Boss : MonoBehaviour
     IEnumerator BossDie() {
         this.animator.SetTrigger("Die");
         this.bossDie = true;
+        // Instantiate(finishPortal, transform.position, transform.rotation);
+        CmdCreatePortal();
         yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);
-    }    
+    }
+
+    [Command(requiresAuthority = false)]
+    public void CmdCreatePortal() {
+        NetworkServer.Spawn(Instantiate(GameNetworkManager.singleton.spawnPrefabs[4], new Vector3(transform.position.x, -1.0f, transform.position.z), transform.rotation));
+    }
     
     // void OnCollisionEnter2D(Collision2D collision)
     // {
