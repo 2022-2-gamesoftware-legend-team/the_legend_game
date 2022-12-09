@@ -14,7 +14,20 @@ public class PlayerSceneChange : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.P)){
+            CmdNextStage();
+        }
+    }
+
+    [Command(requiresAuthority = false)]
+    void CmdNextStage() {
+        GameNetworkManager gameNetworkManager = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<GameNetworkManager>();
+        if (gameNetworkManager) {
+            print("OnTriggerEnter2D NextStage");
+            gameNetworkManager.NextStage();
+        } else {
+            print("Error: GameNetworkManager not found.");
+        }
     }
 
     [ServerCallback]
@@ -22,6 +35,7 @@ public class PlayerSceneChange : NetworkBehaviour
         if (collider.tag == "Finish") {
             GameNetworkManager gameNetworkManager = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<GameNetworkManager>();
             if (gameNetworkManager) {
+                print("OnTriggerEnter2D NextStage");
                 gameNetworkManager.NextStage();
             } else {
                 print("Error: GameNetworkManager not found.");
