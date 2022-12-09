@@ -25,9 +25,10 @@ public class Boss : MonoBehaviour
     public int bossHp = 10;
     public bool bossDie = false;
     public System.Action onDie;
-       ItemDrop itemDrop;
+    ItemDrop itemDrop;
     // Start is called before the first frame update
-    
+    GameObject ScoreManager;
+    SyncScore scoreSync;
     
         
     
@@ -39,6 +40,8 @@ public class Boss : MonoBehaviour
         home = transform.position;
         rigid2D = GetComponent<Rigidbody2D>();
         playercontrol = GetComponent<PlayerControl>();
+        ScoreManager = GameObject.FindGameObjectWithTag("ScoreManager");
+        scoreSync = ScoreManager.GetComponent<SyncScore>();
         // itemDrop = GetComponent<ItemDrop>();
     }
 
@@ -65,6 +68,14 @@ public class Boss : MonoBehaviour
         this.animator.SetTrigger("Die");
         this.bossDie = true;
         yield return new WaitForSeconds(0.5f);
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach(GameObject player in players)
+        {
+            Player p = player.GetComponent<Player>();
+            p.score += 1500;
+            scoreSync.ChangeScore(scoreSync.Score + 1500);
+            
+        }
         Destroy(gameObject);
     }    
     

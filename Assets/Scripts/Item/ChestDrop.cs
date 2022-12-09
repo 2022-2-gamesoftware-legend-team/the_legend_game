@@ -15,9 +15,14 @@ public class ChestDrop : MonoBehaviour
     private string category ;
     private Animator animator;
 
+    GameObject ScoreManager;
+    SyncScore scoreSync;
+
     void Awak()
     {
         this.animator = GetComponent<Animator>();
+        ScoreManager = GameObject.FindGameObjectWithTag("ScoreManager");
+        scoreSync = ScoreManager.GetComponent<SyncScore>();
     }
 
 
@@ -37,6 +42,14 @@ public class ChestDrop : MonoBehaviour
         this.RandomItem();
         yield return new WaitForSeconds(1.5f);
         this.DropItem();
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach(GameObject player in players)
+        {
+            Player p = player.GetComponent<Player>();
+            p.score += 100;
+            scoreSync.ChangeScore(scoreSync.Score + 100);
+            
+        }
         Destroy(gameObject);
     }    
 

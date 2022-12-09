@@ -15,7 +15,7 @@ public class Player : NetworkBehaviour
 
     public readonly SyncSortedSet<int> Items = new SyncSortedSet<int>();
     public float maxSpeed;
-    public float socre;
+    public float score;
     public float jumpPower;
     public bool AttackADone;
     public bool AttackBDone;
@@ -58,7 +58,7 @@ public class Player : NetworkBehaviour
         scoreSync = ScoreManager.GetComponent<SyncScore>();
         // HP = 5;
         CmdSetHP(5);
-        socre = 0;
+        score = 0;
         scoreSync.ChangeScore(0);
 
         AttackADone = true;
@@ -348,8 +348,8 @@ public class Player : NetworkBehaviour
             if (HP < 5)
                 HP++;
             else
-            {
-                socre += 100;
+            {   
+                score += 100;
                 scoreSync.ChangeScore(scoreSync.Score + 100);
             }
         }
@@ -360,9 +360,8 @@ public class Player : NetworkBehaviour
             {
                 DoubleJumpAbllity = true;
             }
-            else
-            {
-                socre += 200;
+            else{
+                score += 200;
                 scoreSync.ChangeScore(scoreSync.Score + 200);
             }
         }
@@ -373,9 +372,8 @@ public class Player : NetworkBehaviour
             {
                 Immune = true;
             }
-            else
-            {
-                socre += 500;
+            else{
+                score += 500;
                 scoreSync.ChangeScore(scoreSync.Score + 500);
             }
         }
