@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2812436826844553289}
   m_Layer: 10
   m_Name: HitObject
-  m_TagString: Enumy
+  m_TagString: Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

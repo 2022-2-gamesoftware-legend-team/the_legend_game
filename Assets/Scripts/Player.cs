@@ -300,8 +300,9 @@ public class Player : NetworkBehaviour
     // [ServerCallback]
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enumy" || collision.gameObject.tag == "Boss" && Immune == false)
+        if (collision.gameObject.tag == "Attack" && Immune == false)
         {
+            Debug.Log("HIT");
             // HP -= 1;
             CmdDecHP();
             anim.SetTrigger("isHit");
