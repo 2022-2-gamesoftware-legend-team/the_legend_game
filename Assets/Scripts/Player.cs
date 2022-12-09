@@ -215,7 +215,7 @@ public class Player : NetworkBehaviour
             // immune start
 
             // immune exit
-            if (ImmuneTimer > 1.0f)
+            if (ImmuneTimer > 3.0f)
             {
                 ImmuneTimer = 0.0f;
                 CmdSetImmune(false);
