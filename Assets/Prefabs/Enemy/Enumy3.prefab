@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4787997053359520788}
   - component: {fileID: 9088540473655890346}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HitObject
-  m_TagString: Untagged
+  m_TagString: Enumy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

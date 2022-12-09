@@ -32,16 +32,4 @@ public class AttackCollider : NetworkBehaviour
         }
         Destroy(gameObject);
     }
-
-    // �� �Ǵ� ������ �浹�� HP -= 1, ���� ����
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Enemy" &&
-           collision.gameObject.tag == "Boss")
-        {
-            print(collision.gameObject.tag);
-            // collision.gameObject.GetComponent<EnemyStatus>().HP -= 1;
-            Destroy(gameObject);
-        }
-    }
 }

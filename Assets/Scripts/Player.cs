@@ -303,6 +303,7 @@ public class Player : NetworkBehaviour
             else if (HP <= 0 && resurrectAbillity == true)
             {
                 HP = 5;
+                resurrectAbillity = false;
             }
         }
 
