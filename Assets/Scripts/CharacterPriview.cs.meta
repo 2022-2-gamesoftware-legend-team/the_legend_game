@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 6e6ca79f9c613b141a6c9123cc9d98fa
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Sword: {fileID: 21300000, guid: ae44d6ca9dc728943a492226b377d3f4, type: 3}
+  - Spear: {fileID: 21300000, guid: f28e5060b1c87274280e20a11304db5a, type: 3}
+  - Mace: {fileID: 21300000, guid: af16cb225967af543b9c764da4690c2e, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
