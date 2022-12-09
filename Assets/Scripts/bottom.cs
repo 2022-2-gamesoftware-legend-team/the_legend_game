@@ -18,7 +18,7 @@ public class bottom : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Ground" || collision.gameObject.tag == "Ground")
+        if (collision.gameObject.name == "Ground" || collision.gameObject.layer == LayerMask.NameToLayer("Ground") || collision.gameObject.tag == "Ground" || collision.gameObject.name == "GroundTile")
         {
             GetComponentInParent<Player>().land = true;
         }
