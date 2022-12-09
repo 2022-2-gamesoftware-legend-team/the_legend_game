@@ -30,7 +30,8 @@ public class Boss : NetworkBehaviour
 
     public GameObject finishPortal;
     // Start is called before the first frame update
-    
+    GameObject ScoreManager;
+    SyncScore scoreSync;
     
         
     
@@ -42,6 +43,8 @@ public class Boss : NetworkBehaviour
         home = transform.position;
         rigid2D = GetComponent<Rigidbody2D>();
         playercontrol = GetComponent<PlayerControl>();
+        ScoreManager = GameObject.FindGameObjectWithTag("ScoreManager");
+        scoreSync = ScoreManager.GetComponent<SyncScore>();
         // itemDrop = GetComponent<ItemDrop>();
     }
 
@@ -70,6 +73,14 @@ public class Boss : NetworkBehaviour
         // Instantiate(finishPortal, transform.position, transform.rotation);
         CmdCreatePortal();
         yield return new WaitForSeconds(0.5f);
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach(GameObject player in players)
+        {
+            Player p = player.GetComponent<Player>();
+            p.score += 1500;
+            scoreSync.ChangeScore(scoreSync.Score + 1500);
+            
+        }
         Destroy(gameObject);
     }
 

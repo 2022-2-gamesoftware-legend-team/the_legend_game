@@ -24,7 +24,8 @@ public class Enumy : MonoBehaviour
     public GameObject itemPrefabJump;
     private string category ;
     // Start is called before the first frame update
-    
+    GameObject ScoreManager;
+    SyncScore scoreSync;
         
     
     void Awake()
@@ -35,7 +36,8 @@ public class Enumy : MonoBehaviour
         home = transform.position;
         rigid2D = GetComponent<Rigidbody2D>();
         playercontrol = GetComponent<PlayerControl>();
-        
+        ScoreManager = GameObject.FindGameObjectWithTag("ScoreManager");
+        scoreSync = ScoreManager.GetComponent<SyncScore>();
     }
     private void Update()
     {
@@ -56,6 +58,14 @@ public class Enumy : MonoBehaviour
         this.RandomItem();
         yield return new WaitForSeconds(0.5f);
         this.DropItem();
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach(GameObject player in players)
+        {
+            Player p = player.GetComponent<Player>();
+            p.score += 150;
+            scoreSync.ChangeScore(scoreSync.Score + 150);
+            
+        }
         Destroy(gameObject);
     }    
 
