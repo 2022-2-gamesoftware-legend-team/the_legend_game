@@ -28,6 +28,7 @@ public class Player : NetworkBehaviour
     public bool DoubleJumping;
     public float DoubleJumpDelay;
     public bool land;
+    public bool resurrectAbillity;
 
     // player components
     public Animator anim;
@@ -70,6 +71,8 @@ public class Player : NetworkBehaviour
         DoubleJumping = false;
         Jumping = false;
         DoubleJumpDelay = 0.0f;
+        resurrectAbillity = false;
+
         // only Local Player can use Camera Move
         if (isLocalPlayer) {
             if (GetComponent<CameraMove>() == null) {
@@ -296,9 +299,13 @@ public class Player : NetworkBehaviour
             SpriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
             CmdSetImmune(true); // immune timer start
 
-            if (HP <= 0)
+            if (HP <= 0 && resurrectAbillity == false)
             {
                 anim.SetBool("isDead", true);
+            }
+            else if (HP <= 0 && resurrectAbillity == true)
+            {
+                HP = 5;
             }
         }
 
@@ -346,8 +353,8 @@ public class Player : NetworkBehaviour
         }
         else if(collision.gameObject.tag=="Revival"){
             collision.gameObject.SetActive(false);
-            if(Immune == false ){
-                Immune = true;
+            if(resurrectAbillity == false ){
+                resurrectAbillity = true;
             }
             else{
                 socre += 500;

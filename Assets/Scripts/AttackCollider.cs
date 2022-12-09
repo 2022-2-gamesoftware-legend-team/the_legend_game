@@ -15,10 +15,10 @@ public class AttackCollider : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if (GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
-        // {
-        //     Destroy(gameObject);
-        // }
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
