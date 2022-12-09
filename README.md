@@ -24,7 +24,8 @@ https://github.com/2022-2-gamesoftware-legend-team/the_legend_game
 
 * Github
 * Trello
-
+![Trello1](https://user-images.githubusercontent.com/6850405/206715095-5779bd14-3cb3-4ba8-833e-b7347e7e0cfb.png)
+![Trello2](https://user-images.githubusercontent.com/6850405/206715120-d5da121c-40ef-4b7a-95d7-ae044c2d53c6.png)
 * Google Docs
 
 ## Coding Guidlines(권장 가이드라인)
