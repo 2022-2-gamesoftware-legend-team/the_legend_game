@@ -275,7 +275,7 @@ public class Player : NetworkBehaviour
     // [ServerCallback]
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Boss" && Immune == false)
+        if (collision.gameObject.tag == "Enumy" || collision.gameObject.tag == "Boss" && Immune == false)
         {
             // HP -= 1;
             CmdDecHP();
