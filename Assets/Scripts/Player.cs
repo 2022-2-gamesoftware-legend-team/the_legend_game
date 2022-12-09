@@ -358,7 +358,7 @@ public class Player : NetworkBehaviour
         else if (collision.gameObject.tag == "JumpItem")
         {
             collision.gameObject.SetActive(false);
-            if (DoubleJumpAbllity != false)
+            if (DoubleJumpAbllity == false)
             {
                 DoubleJumpAbllity = true;
             }
@@ -370,9 +370,9 @@ public class Player : NetworkBehaviour
         else if (collision.gameObject.tag == "Revival")
         {
             collision.gameObject.SetActive(false);
-            if (Immune == false)
+            if (resurrectAbillity == false)
             {
-                Immune = true;
+                resurrectAbillity = true;
             }
             else{
                 score += 500;
